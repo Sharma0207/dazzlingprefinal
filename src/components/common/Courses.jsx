@@ -206,11 +206,8 @@ export default function Courses() {
           <div className="overflow-hidden px-2 md:px-0" ref={carouselRef}>
             <motion.div
               className="flex gap-6"
-              style={{
-                width: `${(courses.length / slidesToShow) * 100}%`,
-              }}
               animate={{
-                marginLeft: `-${currentSlide * (100 / slidesToShow)}%`,
+                x: currentSlide * (-100 / slidesToShow) + "%",
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
