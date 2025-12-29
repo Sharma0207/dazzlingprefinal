@@ -1,0 +1,2 @@
+- [x] Fix Testimonial.jsx by wrapping JSX in React functional component and adding export default.
+- [x] Run the app to verify the error is fixed.
