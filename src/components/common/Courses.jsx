@@ -3,58 +3,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  coursesData,
+  COURSE_LEVELS,
+  COURSE_CATEGORIES,
+  MAIN_COURSES,
+  getCoursesByLevelAndCategory,
+  getAllMainCourses,
+} from "../../data/coursesData";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const courses = [
-  {
-    id: 1,
-    title: "Professional Makeup Artistry",
-    description: "Master techniques for bridal, fashion, and special events",
-    price: "₹12,999",
-    image: "https://images.pexels.com/photos/10446994/pexels-photo-10446994.jpeg?auto=compress&cs=tinysrgb&w=600",
-    duration: "6 weeks",
-  },
-  {
-    id: 2,
-    title: "Bridal Makeup Specialist",
-    description: "Expert training in traditional and modern bridal makeup",
-    price: "₹14,999",
-    image: "https://images.pexels.com/photos/4974344/pexels-photo-4974344.jpeg?auto=compress&cs=tinysrgb&w=600",
-    duration: "8 weeks",
-  },
-  {
-    id: 3,
-    title: "Hair Styling & Design",
-    description: "Cutting, coloring, and styling for all hair types",
-    price: "₹11,999",
-    image: "https://images.pexels.com/photos/7332328/pexels-photo-7332328.jpeg?auto=compress&cs=tinysrgb&w=600",
-    duration: "6 weeks",
-  },
-  {
-    id: 4,
-    title: "Advanced Skincare",
-    description: "Professional training in skincare science and treatments",
-    price: "₹13,999",
-    image: "https://images.pexels.com/photos/9356712/pexels-photo-9356712.jpeg?auto=compress&cs=tinysrgb&w=600",
-    duration: "7 weeks",
-  },
-  {
-    id: 5,
-    title: "Nail Art & Extensions",
-    description: "Master gel nails, extensions, and creative designs",
-    price: "₹9,999",
-    image: "https://images.pexels.com/photos/1934234/pexels-photo-1934234.jpeg?auto=compress&cs=tinysrgb&w=600",
-    duration: "5 weeks",
-  },
-  {
-    id: 6,
-    title: "Salon Management",
-    description: "Learn to manage a salon and build your beauty brand",
-    price: "₹15,999",
-    image: "https://images.pexels.com/photos/8764616/pexels-photo-8764616.jpeg?auto=compress&cs=tinysrgb&w=600",
-    duration: "8 weeks",
-  },
+const levelOptions = [
+  { value: "all", label: "All Courses" },
+  { value: COURSE_LEVELS.BEGINNER, label: "Beginner" },
+  { value: COURSE_LEVELS.BASIC, label: "Basic" },
+  { value: COURSE_LEVELS.ADVANCE, label: "Advanced" },
+];
+
+const categoryOptions = [
+  { value: "all", label: "All Categories" },
+  { value: COURSE_CATEGORIES.SKIN, label: "Skin" },
+  { value: COURSE_CATEGORIES.MAKEUP, label: "Makeup" },
+  { value: COURSE_CATEGORIES.HAIR, label: "Hair" },
+  { value: COURSE_CATEGORIES.NAILS, label: "Nails" },
 ];
 
 export default function Courses() {
@@ -64,8 +36,27 @@ export default function Courses() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [autoplay, setAutoplay] = useState(true);
+  const [selectedLevel, setSelectedLevel] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [showFilters, setShowFilters] = useState(false);
 
-  // Handle responsive slides - 1 card on mobile/tablet, 3 on desktop
+  // Filter courses based on selections
+  const getFilteredCourses = () => {
+    if (selectedLevel === "all" && selectedCategory === "all") {
+      return coursesData;
+    }
+    if (selectedLevel === "all") {
+      return coursesData.filter((c) => c.category === selectedCategory);
+    }
+    if (selectedCategory === "all") {
+      return coursesData.filter((c) => c.level === selectedLevel);
+    }
+    return getCoursesByLevelAndCategory(selectedLevel, selectedCategory);
+  };
+
+  const filteredCourses = getFilteredCourses();
+
+  // Handle responsive slides
   useEffect(() => {
     const updateSlidesToShow = () => {
       if (window.innerWidth < 1024) {
@@ -80,21 +71,26 @@ export default function Courses() {
     return () => window.removeEventListener("resize", updateSlidesToShow);
   }, []);
 
+  // Reset carousel when filters change
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [selectedLevel, selectedCategory]);
+
   // Autoplay logic
   useEffect(() => {
     if (!autoplay) return;
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => {
-        const maxSlide = Math.max(0, courses.length - slidesToShow);
+        const maxSlide = Math.max(0, filteredCourses.length - slidesToShow);
         return prev >= maxSlide ? 0 : prev + 1;
       });
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [autoplay, slidesToShow]);
+  }, [autoplay, slidesToShow, filteredCourses.length]);
 
-  const maxSlide = Math.max(0, courses.length - slidesToShow);
+  const maxSlide = Math.max(0, filteredCourses.length - slidesToShow);
 
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev <= 0 ? maxSlide : prev - 1));
@@ -130,7 +126,7 @@ export default function Courses() {
     <section ref={sectionRef} className="bg-white py-16 md:py-24 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <motion.div
             className="flex items-center justify-center mb-4"
             initial={{ opacity: 0 }}
@@ -179,81 +175,168 @@ export default function Courses() {
           </motion.p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative group">
-          {/* Navigation Buttons */}
-          <motion.button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Previous courses"
-          >
-            <ChevronLeft size={24} />
-          </motion.button>
-
-          <motion.button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Next courses"
-          >
-            <ChevronRight size={24} />
-          </motion.button>
-
-          {/* Carousel */}
-          <div className="overflow-hidden px-2 md:px-0" ref={carouselRef}>
-            <div
-              style={{
-                display: "flex",
-                gap: "1.5rem",
-                transition: "transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1)",
-                transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
-              }}
+        {/* Filter Section */}
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          {/* Mobile Filter Toggle */}
+          <div className="lg:hidden flex justify-center mb-6">
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="px-6 py-2 bg-[#D09163] text-white rounded-full font-semibold text-sm hover:bg-[#E8B998] transition-colors"
             >
-              <AnimatePresence mode="wait">
-                {courses.map((course, index) => (
-                  <motion.div
-                    key={course.id}
-                    className="flex-shrink-0"
-                    style={{
-                      width: `calc(${100 / slidesToShow}% - ${
-                        ((slidesToShow - 1) * 24) / slidesToShow
-                      }px)`,
-                    }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+              {showFilters ? "Hide Filters" : "Show Filters"}
+            </button>
+          </div>
+
+          {/* Filters Container */}
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${
+              !showFilters ? "hidden lg:grid" : "grid"
+            }`}
+          >
+            {/* Level Filter */}
+            <div className="flex flex-col gap-3">
+              <h3 className="font-semibold text-[#1D1D1D] text-sm uppercase tracking-wider">
+                Course Level
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {levelOptions.map((option) => (
+                  <motion.button
+                    key={option.value}
+                    onClick={() => setSelectedLevel(option.value)}
+                    className={`px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${
+                      selectedLevel === option.value
+                        ? "bg-[#D09163] text-white"
+                        : "bg-gray-100 text-[#424242] hover:bg-gray-200"
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <CourseCard course={course} />
-                  </motion.div>
+                    {option.label}
+                  </motion.button>
                 ))}
-              </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Category Filter */}
+            <div className="flex flex-col gap-3">
+              <h3 className="font-semibold text-[#1D1D1D] text-sm uppercase tracking-wider">
+                Category
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {categoryOptions.map((option) => (
+                  <motion.button
+                    key={option.value}
+                    onClick={() => setSelectedCategory(option.value)}
+                    className={`px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${
+                      selectedCategory === option.value
+                        ? "bg-[#D09163] text-white"
+                        : "bg-gray-100 text-[#424242] hover:bg-gray-200"
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {option.label}
+                  </motion.button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-12">
-            {Array.from({ length: maxSlide + 1 }).map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => {
-                  setCurrentSlide(index);
-                  setAutoplay(false);
-                }}
-                className={`rounded-full transition-all duration-300 ${
-                  index === currentSlide
-                    ? "bg-[#D09163] w-8 h-2.5"
-                    : "bg-[#D09163]/30 w-2.5 h-2.5"
-                }`}
-                whileHover={{ scale: 1.2 }}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+          {/* Results Count */}
+          <div className="text-center mt-6 text-gray-600 font-libre-franklin">
+            Showing {filteredCourses.length} course{filteredCourses.length !== 1 ? "s" : ""}
           </div>
-        </div>
+        </motion.div>
+
+        {/* Carousel Container */}
+        {filteredCourses.length > 0 ? (
+          <div className="relative group">
+            {/* Navigation Buttons */}
+            <motion.button
+              onClick={handlePrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Previous courses"
+            >
+              <ChevronLeft size={24} />
+            </motion.button>
+
+            <motion.button
+              onClick={handleNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Next courses"
+            >
+              <ChevronRight size={24} />
+            </motion.button>
+
+            {/* Carousel */}
+            <div className="overflow-hidden px-2 md:px-0" ref={carouselRef}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "1.5rem",
+                  transition: "transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1)",
+                  transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
+                }}
+              >
+                <AnimatePresence mode="wait">
+                  {filteredCourses.map((course, index) => (
+                    <motion.div
+                      key={course.id}
+                      className="flex-shrink-0"
+                      style={{
+                        width: `calc(${100 / slidesToShow}% - ${
+                          ((slidesToShow - 1) * 24) / slidesToShow
+                        }px)`,
+                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <CourseCard course={course} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 mt-12">
+              {Array.from({ length: maxSlide + 1 }).map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => {
+                    setCurrentSlide(index);
+                    setAutoplay(false);
+                  }}
+                  className={`rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? "bg-[#D09163] w-8 h-2.5"
+                      : "bg-[#D09163]/30 w-2.5 h-2.5"
+                  }`}
+                  whileHover={{ scale: 1.2 }}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg font-libre-franklin">
+              No courses found. Please try different filters.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -261,6 +344,23 @@ export default function Courses() {
 
 function CourseCard({ course }) {
   const [priceUnlocked, setPriceUnlocked] = useState(false);
+
+  const getLevelBadgeColor = (level) => {
+    switch (level) {
+      case "beginner":
+        return "bg-green-100 text-green-700";
+      case "basic":
+        return "bg-blue-100 text-blue-700";
+      case "advance":
+        return "bg-purple-100 text-purple-700";
+      default:
+        return "bg-gray-100 text-gray-700";
+    }
+  };
+
+  const formatLevel = (level) => {
+    return level.charAt(0).toUpperCase() + level.slice(1);
+  };
 
   return (
     <motion.div
@@ -278,10 +378,17 @@ function CourseCard({ course }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
 
-        {/* Duration Badge */}
-        <div className="absolute top-4 right-4">
+        {/* Badges */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2">
           <span className="font-libre-franklin text-xs font-semibold text-white bg-[#1D1D1D]/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
             {course.duration}
+          </span>
+          <span
+            className={`font-libre-franklin text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm ${getLevelBadgeColor(
+              course.level
+            )}`}
+          >
+            {formatLevel(course.level)}
           </span>
         </div>
       </div>
@@ -294,7 +401,7 @@ function CourseCard({ course }) {
         </h3>
 
         {/* Description */}
-        <p className="font-libre-franklin text-sm text-gray-600 leading-relaxed mb-5 line-clamp-2 flex-grow">
+        <p className="font-libre-franklin text-sm text-gray-600 leading-relaxed mb-5 line-clamp-3 flex-grow">
           {course.description}
         </p>
 
