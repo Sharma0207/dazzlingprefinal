@@ -206,7 +206,7 @@ export default function Courses() {
             <motion.div
               className="flex gap-6"
               animate={{
-                x: -currentSlide * 100,
+                x: -currentSlide * (100 / slidesToShow),
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
@@ -214,7 +214,12 @@ export default function Courses() {
                 {courses.map((course, index) => (
                   <motion.div
                     key={course.id}
-                    className="flex-shrink-0 w-full"
+                    className="flex-shrink-0"
+                    style={{
+                      width: `calc(${100 / slidesToShow}% - ${
+                        ((slidesToShow - 1) * 24) / slidesToShow
+                      }px)`,
+                    }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
