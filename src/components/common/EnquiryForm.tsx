@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { X } from "lucide-react";
+import { coursesData } from "../../data/coursesData";
 
 interface FormData {
   name: string;
@@ -79,6 +80,16 @@ const EnquiryForm: React.FC = () => {
       closeForm();
     }, 2000);
   };
+
+  // Group courses by level
+  const groupedCourses = coursesData.reduce((acc, course) => {
+    const level = course.level.charAt(0).toUpperCase() + course.level.slice(1);
+    if (!acc[level]) {
+      acc[level] = [];
+    }
+    acc[level].push(course);
+    return acc;
+  }, {} as Record<string, typeof coursesData>);
 
   return (
     <div ref={containerRef} className="enquiry-form-root">
@@ -282,12 +293,15 @@ const EnquiryForm: React.FC = () => {
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     >
                       <option value="">Select a course</option>
-                      <option value="makeup">Professional Makeup Artistry</option>
-                      <option value="bridal">Bridal Makeup Specialist</option>
-                      <option value="hair">Hair Styling & Design</option>
-                      <option value="skincare">Advanced Skincare & Aesthetics</option>
-                      <option value="nails">Nail Art & Extension Techniques</option>
-                      <option value="business">Beauty Business & Salon Management</option>
+                      {Object.entries(groupedCourses).map(([level, courses]) => (
+                        <optgroup key={level} label={level}>
+                          {courses.map((course) => (
+                            <option key={course.id} value={course.title}>
+                              {course.title}
+                            </option>
+                          ))}
+                        </optgroup>
+                      ))}
                     </select>
                   </div>
 
