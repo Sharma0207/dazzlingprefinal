@@ -343,8 +343,6 @@ export default function Courses() {
 }
 
 function CourseCard({ course }) {
-  const [priceUnlocked, setPriceUnlocked] = useState(false);
-
   const getLevelBadgeColor = (level) => {
     switch (level) {
       case "beginner":
@@ -360,6 +358,10 @@ function CourseCard({ course }) {
 
   const formatLevel = (level) => {
     return level.charAt(0).toUpperCase() + level.slice(1);
+  };
+
+  const handleEnquireClick = () => {
+    window.dispatchEvent(new Event("openEnquiryForm"));
   };
 
   return (
@@ -413,35 +415,24 @@ function CourseCard({ course }) {
           <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-2">
             Course Price
           </p>
-          {priceUnlocked ? (
-            <motion.p
-              className="font-playfair-display text-2xl md:text-[26px] font-bold text-[#D09163]"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              {course.price}
-            </motion.p>
-          ) : (
-            <div className="flex flex-col gap-2">
-              <p className="font-playfair-display text-2xl md:text-[26px] font-bold text-gray-400">
-                ₹XXX
-              </p>
-              <p className="font-libre-franklin text-xs text-[#D09163] font-medium">
-                Enquire to unlock price
-              </p>
-            </div>
-          )}
+          <div className="flex flex-col gap-2">
+            <p className="font-playfair-display text-2xl md:text-[26px] font-bold text-gray-400">
+              ₹XXX
+            </p>
+            <p className="font-libre-franklin text-xs text-[#D09163] font-medium">
+              Enquire to unlock price
+            </p>
+          </div>
         </div>
 
         {/* CTA Button */}
         <motion.button
-          onClick={() => setPriceUnlocked(!priceUnlocked)}
+          onClick={handleEnquireClick}
           className="w-full bg-[#1D1D1D] text-white font-plus-jakarta font-bold text-sm py-3 rounded-lg hover:bg-[#424242] transition-colors duration-300"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {priceUnlocked ? "Hide Price" : "Enquire Now"}
+          Enquire Now
         </motion.button>
       </div>
     </motion.div>
