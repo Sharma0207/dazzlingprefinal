@@ -60,6 +60,7 @@ const courses = [
 export default function Courses() {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
+  const carouselRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [autoplay, setAutoplay] = useState(true);
