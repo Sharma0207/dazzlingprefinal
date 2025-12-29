@@ -259,14 +259,24 @@ export default function Courses() {
                     </div>
 
                     {/* Course Content */}
-                    <div className="course-content bg-white rounded-b-2xl p-5 md:p-6 shadow-sm border border-gray-100 border-t-0">
-                      <h3 className="course-title font-plus-jakarta font-bold text-base md:text-lg text-[#1D1D1D] mb-3 leading-tight line-clamp-2">
+                    <div className="course-content bg-white rounded-b-2xl p-5 md:p-6 shadow-sm border border-gray-100 border-t-0 flex flex-col h-full">
+                      <h3 className="course-title font-plus-jakarta font-bold text-base md:text-lg text-[#1D1D1D] mb-2 leading-tight line-clamp-2">
                         {course.title}
                       </h3>
 
-                      <p className="course-description font-libre-franklin text-sm md:text-[15px] text-gray-600 leading-relaxed mb-5 line-clamp-2">
+                      <p className="course-description font-libre-franklin text-sm md:text-[14px] text-gray-600 leading-relaxed mb-4 line-clamp-2 flex-grow">
                         {course.description}
                       </p>
+
+                      {/* Price Section */}
+                      <div className="price-section mb-5 pt-4 border-t border-gray-200">
+                        <p className="font-libre-franklin text-xs md:text-[12px] text-gray-500 uppercase tracking-wide mb-1">
+                          Course Price
+                        </p>
+                        <p className="font-playfair-display text-2xl md:text-[24px] font-bold text-[#D09163]">
+                          {course.price}
+                        </p>
+                      </div>
 
                       {/* Enquire Now Button */}
                       <motion.button
