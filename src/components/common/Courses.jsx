@@ -203,11 +203,11 @@ export default function Courses() {
           </motion.button>
 
           {/* Carousel */}
-          <div className="overflow-hidden px-2 md:px-0">
+          <div className="overflow-hidden px-2 md:px-0" ref={carouselRef}>
             <motion.div
               className="flex gap-6"
-              style={{
-                transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
+              animate={{
+                x: `-${(currentSlide / slidesToShow) * 100}%`,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
