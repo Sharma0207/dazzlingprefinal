@@ -207,7 +207,7 @@ export default function Courses() {
             <motion.div
               className="flex gap-6"
               animate={{
-                x: currentSlide * (-100 / slidesToShow) + "%",
+                transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
