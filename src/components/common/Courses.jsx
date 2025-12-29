@@ -205,8 +205,9 @@ export default function Courses() {
           <div className="overflow-hidden px-2 md:px-0">
             <motion.div
               className="flex gap-6"
+              initial={{ x: 0 }}
               animate={{
-                x: -currentSlide * (100 / slidesToShow),
+                x: -currentSlide * (100 / slidesToShow) + "%",
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
