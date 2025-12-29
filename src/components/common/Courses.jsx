@@ -64,21 +64,9 @@ export default function Courses() {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [autoplay, setAutoplay] = useState(true);
 
-  // Handle responsive slides
+  // Handle responsive slides - 1 card at a time on all screens
   useEffect(() => {
-    const updateSlidesToShow = () => {
-      if (window.innerWidth < 640) {
-        setSlidesToShow(1);
-      } else if (window.innerWidth < 1024) {
-        setSlidesToShow(2);
-      } else {
-        setSlidesToShow(3);
-      }
-    };
-
-    updateSlidesToShow();
-    window.addEventListener("resize", updateSlidesToShow);
-    return () => window.removeEventListener("resize", updateSlidesToShow);
+    setSlidesToShow(1);
   }, []);
 
   // Autoplay logic
