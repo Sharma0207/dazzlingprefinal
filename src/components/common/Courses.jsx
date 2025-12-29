@@ -248,6 +248,8 @@ export default function Courses() {
 }
 
 function CourseCard({ course }) {
+  const [priceUnlocked, setPriceUnlocked] = useState(false);
+
   return (
     <motion.div
       className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 h-full flex flex-col border border-gray-100"
@@ -287,23 +289,40 @@ function CourseCard({ course }) {
         {/* Divider */}
         <div className="w-12 h-1 bg-gradient-to-r from-[#D09163] to-[#FFD5BB] rounded-full mb-5" />
 
-        {/* Price */}
+        {/* Price Section */}
         <div className="mb-6">
-          <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-1">
-            Starting at
+          <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-2">
+            Course Price
           </p>
-          <p className="font-playfair-display text-2xl md:text-[26px] font-bold text-[#D09163]">
-            {course.price}
-          </p>
+          {priceUnlocked ? (
+            <motion.p
+              className="font-playfair-display text-2xl md:text-[26px] font-bold text-[#D09163]"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {course.price}
+            </motion.p>
+          ) : (
+            <div className="flex flex-col gap-2">
+              <p className="font-playfair-display text-2xl md:text-[26px] font-bold text-gray-400">
+                ₹XXX
+              </p>
+              <p className="font-libre-franklin text-xs text-[#D09163] font-medium">
+                Enquire to unlock price
+              </p>
+            </div>
+          )}
         </div>
 
         {/* CTA Button */}
         <motion.button
+          onClick={() => setPriceUnlocked(!priceUnlocked)}
           className="w-full bg-[#1D1D1D] text-white font-plus-jakarta font-bold text-sm py-3 rounded-lg hover:bg-[#424242] transition-colors duration-300"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          Enquire Now
+          {priceUnlocked ? "Hide Price" : "Enquire Now"}
         </motion.button>
       </div>
     </motion.div>
