@@ -1,11 +1,6 @@
-import React, { useRef, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, Lazy } from "swiper/modules";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -65,10 +60,54 @@ const courses = [
 export default function Courses() {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const swiperRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [autoplay, setAutoplay] = useState(true);
 
+  // Handle responsive slides
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      if (window.innerWidth < 640) {
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 1024) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    return () => window.removeEventListener("resize", updateSlidesToShow);
+  }, []);
+
+  // Autoplay logic
+  useEffect(() => {
+    if (!autoplay) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const maxSlide = Math.max(0, courses.length - slidesToShow);
+        return prev >= maxSlide ? 0 : prev + 1;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [autoplay, slidesToShow]);
+
+  const maxSlide = Math.max(0, courses.length - slidesToShow);
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev <= 0 ? maxSlide : prev - 1));
+    setAutoplay(false);
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev >= maxSlide ? 0 : prev + 1));
+    setAutoplay(false);
+  };
+
+  // GSAP animation for title
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, {
@@ -87,18 +126,6 @@ export default function Courses() {
 
     return () => ctx.revert();
   }, []);
-
-  const handlePrev = () => {
-    if (swiperRef.current?.swiper) {
-      swiperRef.current.swiper.slidePrev();
-    }
-  };
-
-  const handleNext = () => {
-    if (swiperRef.current?.swiper) {
-      swiperRef.current.swiper.slideNext();
-    }
-  };
 
   return (
     <section ref={sectionRef} className="bg-white py-16 md:py-24 lg:py-28">
@@ -153,11 +180,10 @@ export default function Courses() {
           </motion.p>
         </div>
 
-        {/* Slider Container */}
+        {/* Carousel Container */}
         <div className="relative group">
-          {/* Custom Navigation Buttons */}
+          {/* Navigation Buttons */}
           <motion.button
-            ref={prevRef}
             onClick={handlePrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
             whileHover={{ scale: 1.1 }}
@@ -168,7 +194,6 @@ export default function Courses() {
           </motion.button>
 
           <motion.button
-            ref={nextRef}
             onClick={handleNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
             whileHover={{ scale: 1.1 }}
@@ -178,66 +203,58 @@ export default function Courses() {
             <ChevronRight size={24} />
           </motion.button>
 
-          {/* Swiper */}
-          <Swiper
-            ref={swiperRef}
-            modules={[Navigation, Pagination, Autoplay, Lazy]}
-            slidesPerView={1}
-            spaceBetween={24}
-            breakpoints={{
-              640: { slidesPerView: 2, spaceBetween: 20 },
-              1024: { slidesPerView: 3, spaceBetween: 24 },
-            }}
-            pagination={{
-              el: ".swiper-pagination-custom",
-              clickable: true,
-              renderBullet: (index, className) =>
-                `<span class="${className} cursor-pointer"></span>`,
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: true,
-              pauseOnMouseEnter: true,
-            }}
-            loop={true}
-            className="pb-20"
-          >
-            {courses.map((course) => (
-              <SwiperSlide key={course.id}>
-                <motion.div
-                  className="h-full"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <CourseCard course={course} />
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {/* Carousel */}
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex gap-6"
+              animate={{
+                x: -currentSlide * (100 / slidesToShow),
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              <AnimatePresence mode="wait">
+                {courses.map((course, index) => (
+                  <motion.div
+                    key={course.id}
+                    className="flex-shrink-0"
+                    style={{
+                      width: `calc(${100 / slidesToShow}% - ${
+                        ((slidesToShow - 1) * 24) / slidesToShow
+                      }px)`,
+                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <CourseCard course={course} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </div>
 
-          {/* Pagination */}
-          <div className="swiper-pagination-custom flex justify-center gap-2 mt-8 absolute bottom-0 left-1/2 -translate-x-1/2" />
+          {/* Pagination Dots */}
+          <div className="flex justify-center gap-2 mt-12">
+            {Array.from({ length: maxSlide + 1 }).map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => {
+                  setCurrentSlide(index);
+                  setAutoplay(false);
+                }}
+                className={`rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-[#D09163] w-8 h-2.5"
+                    : "bg-[#D09163]/30 w-2.5 h-2.5"
+                }`}
+                whileHover={{ scale: 1.2 }}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
-
-      <style jsx>{`
-        :global(.swiper-pagination-custom span) {
-          width: 10px;
-          height: 10px;
-          background-color: #D09163;
-          border-radius: 50%;
-          opacity: 0.5;
-          transition: all 0.3s ease;
-        }
-
-        :global(.swiper-pagination-custom span.swiper-pagination-bullet-active) {
-          opacity: 1;
-          width: 28px;
-          border-radius: 5px;
-        }
-      `}</style>
     </section>
   );
 }
@@ -245,7 +262,7 @@ export default function Courses() {
 function CourseCard({ course }) {
   return (
     <motion.div
-      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-full flex flex-col border border-gray-100"
+      className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 h-full flex flex-col border border-gray-100"
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
     >
@@ -258,36 +275,36 @@ function CourseCard({ course }) {
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Duration Badge */}
+        <div className="absolute top-4 right-4">
+          <span className="font-libre-franklin text-xs font-semibold text-white bg-[#1D1D1D]/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+            {course.duration}
+          </span>
+        </div>
       </div>
 
       {/* Content Container */}
       <div className="p-6 flex flex-col flex-grow">
-        {/* Duration Badge */}
-        <div className="inline-flex items-center gap-2 mb-3 w-fit">
-          <span className="font-libre-franklin text-xs font-medium text-[#D09163] bg-[#FFD5BB]/30 px-3 py-1 rounded-full">
-            {course.duration}
-          </span>
-        </div>
-
         {/* Title */}
-        <h3 className="font-playfair-display font-bold text-lg md:text-xl text-[#1D1D1D] mb-2 line-clamp-2">
+        <h3 className="font-playfair-display font-bold text-lg md:text-xl text-[#1D1D1D] mb-3 line-clamp-2">
           {course.title}
         </h3>
 
         {/* Description */}
-        <p className="font-libre-franklin text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2 flex-grow">
+        <p className="font-libre-franklin text-sm text-gray-600 leading-relaxed mb-5 line-clamp-2 flex-grow">
           {course.description}
         </p>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-gradient-to-r from-[#D09163] to-[#FFD5BB] rounded-full mb-4" />
+        <div className="w-12 h-1 bg-gradient-to-r from-[#D09163] to-[#FFD5BB] rounded-full mb-5" />
 
         {/* Price */}
         <div className="mb-6">
           <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-1">
             Starting at
           </p>
-          <p className="font-playfair-display text-2xl font-bold text-[#D09163]">
+          <p className="font-playfair-display text-2xl md:text-[26px] font-bold text-[#D09163]">
             {course.price}
           </p>
         </div>
