@@ -192,11 +192,11 @@ export default function Courses() {
           </motion.button>
 
           {/* Carousel */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden px-2 md:px-0">
             <motion.div
               className="flex gap-6"
               animate={{
-                x: -currentSlide * (100 / slidesToShow),
+                x: -currentSlide * 100,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
@@ -204,12 +204,7 @@ export default function Courses() {
                 {courses.map((course, index) => (
                   <motion.div
                     key={course.id}
-                    className="flex-shrink-0"
-                    style={{
-                      width: `calc(${100 / slidesToShow}% - ${
-                        ((slidesToShow - 1) * 24) / slidesToShow
-                      }px)`,
-                    }}
+                    className="flex-shrink-0 w-full"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
