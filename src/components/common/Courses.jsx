@@ -204,12 +204,13 @@ export default function Courses() {
 
           {/* Carousel */}
           <div className="overflow-hidden px-2 md:px-0" ref={carouselRef}>
-            <motion.div
-              className="flex gap-6"
-              animate={{
+            <div
+              style={{
+                display: "flex",
+                gap: "1.5rem",
+                transition: "transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1)",
                 transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
               }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <AnimatePresence mode="wait">
                 {courses.map((course, index) => (
@@ -230,7 +231,7 @@ export default function Courses() {
                   </motion.div>
                 ))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
 
           {/* Pagination Dots */}
