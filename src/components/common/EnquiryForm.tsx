@@ -11,13 +11,55 @@ interface FormData {
   message: string;
 }
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  courseInterest?: string;
+  message?: string;
+}
+
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbyeywy4rzA7GOwVYT60hVdrCGb8LbGGycRqYPpRPimxWFpgqr1Z0Nd-EzWNXShiFZ8Z/exec";
+
+// Validation functions
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePhone = (phone: string): boolean => {
+  const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
+  return phoneRegex.test(phone) || phone.length === 0; // Phone is optional
+};
+
+const validateForm = (data: FormData): FormErrors => {
+  const errors: FormErrors = {};
+
+  if (!data.name.trim()) {
+    errors.name = "Name is required";
+  } else if (data.name.trim().length < 2) {
+    errors.name = "Name must be at least 2 characters";
+  }
+
+  if (!data.email.trim()) {
+    errors.email = "Email is required";
+  } else if (!validateEmail(data.email)) {
+    errors.email = "Please enter a valid email";
+  }
+
+  if (data.phone && !validatePhone(data.phone)) {
+    errors.phone = "Please enter a valid phone number";
+  }
+
+  return errors;
+};
 
 const EnquiryForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
