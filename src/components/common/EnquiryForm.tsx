@@ -126,10 +126,27 @@ const EnquiryForm: React.FC = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Clear error for this field when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate form
+    const newErrors = validateForm(formData);
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -143,6 +160,7 @@ const EnquiryForm: React.FC = () => {
       // With no-cors mode, we can't read the response, so we'll assume success
       // if the request doesn't throw an error
       setIsSubmitted(true);
+      setErrors({});
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -156,7 +174,7 @@ const EnquiryForm: React.FC = () => {
       }, 2000);
     } catch (error) {
       console.error(error);
-      alert("Network error. Try again later.");
+      setErrors({ name: "Network error. Please try again later." });
     } finally {
       setIsLoading(false);
     }
