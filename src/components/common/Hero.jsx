@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { openWhatsApp } from "../../utils/whatsapp";
+import { openWhatsApp, openWhatsAppWithCourse } from "../../utils/whatsapp";
 import hero1 from "../../assets/dazzling_images/Hero/hero1.jpeg";
 import hero2 from "../../assets/dazzling_images/Hero/hero2.jpg";
 import hero3 from "../../assets/dazzling_images/Hero/hero3.png";
