@@ -130,7 +130,15 @@ export default function Footer() {
         {/* Bottom Text */}
         <div className="text-center">
           <p className="font-poppins text-[18px] text-black leading-[19px] tracking-[1.44px] capitalize">
-            Developed By: Team Flexirl.com
+            Developed By:{" "}
+            <a
+              href="https://www.flexirl.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#D09163] transition-colors"
+            >
+              Team Flexirl.com
+            </a>
           </p>
         </div>
       </div>
