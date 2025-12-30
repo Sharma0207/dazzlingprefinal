@@ -72,9 +72,17 @@ const EnquiryForm: React.FC = () => {
     };
   }, [isOpen]);
 
-  // Prevent scrolling on the overlay
-  const handleOverlayScroll = (e: React.WheelEvent | React.TouchEvent) => {
-    if (isOpen && overlayRef.current === e.currentTarget) {
+  // Prevent scrolling on the overlay background (but allow on the panel)
+  const handleOverlayWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const panel = (e.currentTarget as HTMLDivElement).querySelector(`.enquiry-panel-${zIndex}`) as HTMLElement;
+    if (panel && !panel.contains(e.target as Node)) {
+      e.preventDefault();
+    }
+  };
+
+  const handleOverlayTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const panel = (e.currentTarget as HTMLDivElement).querySelector(`.enquiry-panel-${zIndex}`) as HTMLElement;
+    if (panel && !panel.contains(e.target as Node)) {
       e.preventDefault();
     }
   };
