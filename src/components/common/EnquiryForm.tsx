@@ -235,6 +235,7 @@ const EnquiryForm: React.FC = () => {
           transition: all 0.3s ease 0.15s;
           -webkit-overflow-scrolling: touch;
           scroll-behavior: smooth;
+          contain: layout style paint;
         }
 
         .enquiry-overlay-${zIndex}.open .enquiry-panel-${zIndex} {
