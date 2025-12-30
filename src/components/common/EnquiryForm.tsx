@@ -78,11 +78,13 @@ const EnquiryForm: React.FC = () => {
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      // With no-cors mode, we can't read the response, so we'll assume success
+      // if the request doesn't throw an error
 
       if (result.success) {
         // Show success message
