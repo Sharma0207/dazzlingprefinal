@@ -309,7 +309,7 @@ export default function Courses() {
               <div
                 style={{
                   display: "flex",
-                  gap: "1.5rem",
+                  gap: slidesToShow >= 2 ? "1rem" : "1.5rem",
                   transition: "transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1)",
                   transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
                   width: "100%",
