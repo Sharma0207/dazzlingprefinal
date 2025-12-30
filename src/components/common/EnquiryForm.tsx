@@ -10,6 +10,9 @@ interface FormData {
   message: string;
 }
 
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbyeywy4rzA7GOwVYT60hVdrCGb8LbGGycRqYPpRPimxWFpgqr1Z0Nd-EzWNXShiFZ8Z/exec";
+
 const EnquiryForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({
