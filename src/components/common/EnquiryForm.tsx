@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { X } from "lucide-react";
+import { X, User, Mail, Phone, BookOpen, MessageSquare, Sparkles, Brush, Heart } from "lucide-react";
 import { coursesData } from "../../data/coursesData";
 
 interface FormData {
@@ -10,8 +10,13 @@ interface FormData {
   message: string;
 }
 
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbyeywy4rzA7GOwVYT60hVdrCGb8LbGGycRqYPpRPimxWFpgqr1Z0Nd-EzWNXShiFZ8Z/exec";
+
 const EnquiryForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -19,7 +24,6 @@ const EnquiryForm: React.FC = () => {
     courseInterest: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const zIndex = 999;
@@ -45,6 +49,20 @@ const EnquiryForm: React.FC = () => {
     setIsOpen(false);
   };
 
+  // Prevent body scroll when form is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+
   // Close menu on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -67,24 +85,38 @@ const EnquiryForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    console.log("Form submitted:", formData);
-
-    // Show success message
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        courseInterest: "",
-        message: "",
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      closeForm();
-    }, 2000);
+
+      // With no-cors mode, we can't read the response, so we'll assume success
+      // if the request doesn't throw an error
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          courseInterest: "",
+          message: "",
+        });
+        closeForm();
+      }, 2000);
+    } catch (error) {
+      console.error(error);
+      alert("Network error. Try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Group courses by level
@@ -126,7 +158,11 @@ const EnquiryForm: React.FC = () => {
           position: relative;
           width: 90%;
           max-width: 600px;
-          background: white;
+          background: linear-gradient(135deg, #ffffff 0%, #fef9f5 100%);
+          background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fd555ff5d715946eea839700686a8452e%2F71a6822e50fa4bb9991d93104bfc58c3?format=webp&width=1000');
+          background-size: cover;
+          background-position: center;
+          background-blend-mode: overlay;
           border-radius: 20px;
           max-height: 90vh;
           overflow-y: auto;
@@ -135,6 +171,7 @@ const EnquiryForm: React.FC = () => {
           transform: scale(0.8);
           opacity: 0;
           transition: all 0.3s ease 0.15s;
+          overflow-x: hidden;
         }
 
         .enquiry-overlay-${zIndex}.open .enquiry-panel-${zIndex} {
@@ -162,6 +199,48 @@ const EnquiryForm: React.FC = () => {
           color: #D09163;
         }
 
+        .form-field-wrapper {
+          position: relative;
+        }
+
+        .form-field-icon {
+          position: absolute;
+          left: 12px;
+          top: 40px;
+          color: #D09163;
+          pointer-events: none;
+        }
+
+        .form-input {
+          padding-left: 40px !important;
+        }
+
+        .doodle-decoration {
+          position: absolute;
+          opacity: 0.05;
+          pointer-events: none;
+        }
+
+        .doodle-top-left {
+          top: -50px;
+          left: -50px;
+          width: 200px;
+          height: 200px;
+        }
+
+        .doodle-bottom-right {
+          bottom: -80px;
+          right: -80px;
+          width: 280px;
+          height: 280px;
+        }
+
+        .header-icon {
+          display: inline-block;
+          margin-right: 10px;
+          color: #D09163;
+        }
+
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
@@ -186,10 +265,11 @@ const EnquiryForm: React.FC = () => {
       >
         {/* Form Panel */}
         <div
-          className={`enquiry-panel-${zIndex}`}
+          className={`enquiry-panel-${zIndex} relative overflow-hidden`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-8 md:p-12">
+
+          <div className="p-8 md:p-12 relative z-10">
             {/* Close Button */}
             <button
               className="enquiry-close-btn"
@@ -202,20 +282,8 @@ const EnquiryForm: React.FC = () => {
             {/* Success Message */}
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center gap-6 text-center py-12">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-8 h-8 text-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-orange-100 rounded-full flex items-center justify-center">
+                  <Sparkles className="w-8 h-8 text-[#D09163]" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-[#424242] mb-2">
@@ -230,10 +298,12 @@ const EnquiryForm: React.FC = () => {
               <>
                 {/* Form Header */}
                 <div className="mb-8 mt-8">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#424242] mb-2">
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
+                    <Brush className="w-8 h-8 text-[#D09163]" />
                     Say Hello
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-[#D09163]" />
                     Fill out the form below and we'll get back to you soon.
                   </p>
                 </div>
@@ -241,8 +311,9 @@ const EnquiryForm: React.FC = () => {
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <User className="w-4 h-4 text-[#D09163]" />
                       Full Name
                     </label>
                     <input
@@ -252,13 +323,14 @@ const EnquiryForm: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="Your name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     />
                   </div>
 
                   {/* Email */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-[#D09163]" />
                       Email Address
                     </label>
                     <input
@@ -268,13 +340,14 @@ const EnquiryForm: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     />
                   </div>
 
                   {/* Phone */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-[#D09163]" />
                       Phone Number
                     </label>
                     <input
@@ -283,20 +356,21 @@ const EnquiryForm: React.FC = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+91 000 0000 000"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     />
                   </div>
 
                   {/* Course Interest */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-[#D09163]" />
                       Course of Interest
                     </label>
                     <select
                       name="courseInterest"
                       value={formData.courseInterest}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     >
                       <option value="">Select a course</option>
                       {Object.entries(groupedCourses).map(([level, courses]) => (
@@ -312,8 +386,9 @@ const EnquiryForm: React.FC = () => {
                   </div>
 
                   {/* Message */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <MessageSquare className="w-4 h-4 text-[#D09163]" />
                       Message
                     </label>
                     <textarea
@@ -329,9 +404,10 @@ const EnquiryForm: React.FC = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                    disabled={isLoading}
+                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Send Enquiry
+                    {isLoading ? "Sending..." : "Send Enquiry"}
                   </button>
 
                   {/* Privacy Notice */}
