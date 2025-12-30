@@ -265,7 +265,7 @@ export default function Courses() {
             {/* Navigation Buttons */}
             <motion.button
               onClick={handlePrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-20 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Previous courses"
@@ -275,12 +275,33 @@ export default function Courses() {
 
             <motion.button
               onClick={handleNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-20 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Next courses"
             >
               <ChevronRight size={24} />
+            </motion.button>
+
+            {/* Mobile Navigation Buttons - Positioned inside carousel area */}
+            <motion.button
+              onClick={handlePrev}
+              className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-md hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Previous courses"
+            >
+              <ChevronLeft size={20} />
+            </motion.button>
+
+            <motion.button
+              onClick={handleNext}
+              className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-md hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Next courses"
+            >
+              <ChevronRight size={20} />
             </motion.button>
 
             {/* Carousel */}
