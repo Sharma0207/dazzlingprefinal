@@ -115,7 +115,9 @@ export default function Footer() {
             </h3>
             <div className="flex gap-0 flex-wrap justify-center">
               <a
-                href="#"
+                href="https://www.instagram.com/dazzlingworldacademy/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[#D09163] hover:text-[#B87D4F] transition-colors p-[11.69px]"
                 aria-label="Instagram"
               >
