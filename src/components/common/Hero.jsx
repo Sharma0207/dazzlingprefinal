@@ -170,6 +170,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
           <motion.button
+            onClick={() => openWhatsApp()}
             className="inline-flex items-center justify-center px-6 md:px-[15.4px] py-3 md:py-[12.73px] bg-[#1D1D1D] rounded-[10px] hover:bg-[#2D2D2D] transition-colors shadow-md"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
