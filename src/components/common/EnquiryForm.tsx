@@ -262,10 +262,18 @@ const EnquiryForm: React.FC = () => {
       >
         {/* Form Panel */}
         <div
-          className={`enquiry-panel-${zIndex}`}
+          className={`enquiry-panel-${zIndex} relative overflow-hidden`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-8 md:p-12">
+          {/* Doodle Decorations */}
+          <div className="doodle-decoration doodle-top-left opacity-10">
+            <DoodlePattern />
+          </div>
+          <div className="doodle-decoration doodle-bottom-right opacity-10">
+            <DoodlePattern />
+          </div>
+
+          <div className="p-8 md:p-12 relative z-10">
             {/* Close Button */}
             <button
               className="enquiry-close-btn"
@@ -278,20 +286,8 @@ const EnquiryForm: React.FC = () => {
             {/* Success Message */}
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center gap-6 text-center py-12">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-8 h-8 text-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-orange-100 rounded-full flex items-center justify-center">
+                  <Sparkles className="w-8 h-8 text-[#D09163]" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-[#424242] mb-2">
@@ -306,10 +302,12 @@ const EnquiryForm: React.FC = () => {
               <>
                 {/* Form Header */}
                 <div className="mb-8 mt-8">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#424242] mb-2">
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
+                    <Brush className="w-8 h-8 text-[#D09163]" />
                     Say Hello
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-[#D09163]" />
                     Fill out the form below and we'll get back to you soon.
                   </p>
                 </div>
