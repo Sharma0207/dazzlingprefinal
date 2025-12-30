@@ -366,11 +366,11 @@ const EnquiryForm: React.FC = () => {
               <>
                 {/* Form Header */}
                 <div className="mb-8 mt-8">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
+                  <h2 id="enquiry-form-title" className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
                     <Brush className="w-8 h-8 text-[#D09163]" />
                     Say Hello
                   </h2>
-                  <p className="text-gray-600 flex items-center gap-2">
+                  <p id="enquiry-form-description" className="text-gray-600 flex items-center gap-2">
                     <Heart className="w-4 h-4 text-[#D09163]" />
                     Fill out the form below and we'll get back to you soon.
                   </p>
