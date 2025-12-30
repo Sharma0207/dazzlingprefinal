@@ -85,24 +85,18 @@ const EnquiryForm: React.FC = () => {
 
       // With no-cors mode, we can't read the response, so we'll assume success
       // if the request doesn't throw an error
-
-      if (result.success) {
-        // Show success message
-        setIsSubmitted(true);
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            courseInterest: "",
-            message: "",
-          });
-          closeForm();
-        }, 2000);
-      } else {
-        alert("Submission failed. Please try again.");
-      }
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          courseInterest: "",
+          message: "",
+        });
+        closeForm();
+      }, 2000);
     } catch (error) {
       console.error(error);
       alert("Network error. Try again later.");
