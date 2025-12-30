@@ -360,20 +360,21 @@ const EnquiryForm: React.FC = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+91 000 0000 000"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     />
                   </div>
 
                   {/* Course Interest */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-[#D09163]" />
                       Course of Interest
                     </label>
                     <select
                       name="courseInterest"
                       value={formData.courseInterest}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     >
                       <option value="">Select a course</option>
                       {Object.entries(groupedCourses).map(([level, courses]) => (
@@ -389,8 +390,9 @@ const EnquiryForm: React.FC = () => {
                   </div>
 
                   {/* Message */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <MessageSquare className="w-4 h-4 text-[#D09163]" />
                       Message
                     </label>
                     <textarea
