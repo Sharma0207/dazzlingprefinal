@@ -284,13 +284,14 @@ export default function Courses() {
             </motion.button>
 
             {/* Carousel */}
-            <div className="overflow-hidden px-2 md:px-0" ref={carouselRef}>
+            <div className="overflow-hidden w-full" ref={carouselRef}>
               <div
                 style={{
                   display: "flex",
                   gap: "1.5rem",
                   transition: "transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1)",
                   transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
+                  width: "100%",
                 }}
               >
                 <AnimatePresence mode="wait">
