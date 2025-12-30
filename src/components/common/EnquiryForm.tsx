@@ -383,10 +383,16 @@ const EnquiryForm: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      required
                       placeholder="Your name"
-                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      className={`form-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${
+                        errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-[#D09163]'
+                      }`}
                     />
+                    {errors.name && (
+                      <p id="name-error" className="text-red-500 text-sm mt-1">{errors.name}</p>
+                    )}
                   </div>
 
                   {/* Email */}
@@ -400,10 +406,16 @@ const EnquiryForm: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      required
                       placeholder="your@email.com"
-                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                      className={`form-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${
+                        errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-[#D09163]'
+                      }`}
                     />
+                    {errors.email && (
+                      <p id="email-error" className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    )}
                   </div>
 
                   {/* Phone */}
@@ -418,8 +430,15 @@ const EnquiryForm: React.FC = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+91 000 0000 000"
-                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      aria-invalid={!!errors.phone}
+                      aria-describedby={errors.phone ? "phone-error" : undefined}
+                      className={`form-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${
+                        errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-[#D09163]'
+                      }`}
                     />
+                    {errors.phone && (
+                      <p id="phone-error" className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                    )}
                   </div>
 
                   {/* Course Interest */}
