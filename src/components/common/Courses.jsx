@@ -406,12 +406,12 @@ function CourseCard({ course }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
 
         {/* Badges */}
-        <div className="absolute top-4 right-4 flex flex-col gap-2">
-          <span className="font-libre-franklin text-xs font-semibold text-white bg-[#1D1D1D]/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+        <div className="absolute top-3 right-3 md:top-4 md:right-4 flex flex-col gap-1 md:gap-2">
+          <span className="font-libre-franklin text-xs font-semibold text-white bg-[#1D1D1D]/80 backdrop-blur-sm px-2 md:px-3 py-1 md:py-1.5 rounded-full">
             {course.duration}
           </span>
           <span
-            className={`font-libre-franklin text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm ${getLevelBadgeColor(
+            className={`font-libre-franklin text-xs font-semibold px-2 md:px-3 py-1 md:py-1.5 rounded-full backdrop-blur-sm ${getLevelBadgeColor(
               course.level
             )}`}
           >
