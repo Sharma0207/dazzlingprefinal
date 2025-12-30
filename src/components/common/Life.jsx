@@ -114,6 +114,10 @@ const Life = () => {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = isMuted;
+      // Reset video to start when switching reels
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+      }
     }
   }, [isMuted, videoIndex]);
 
