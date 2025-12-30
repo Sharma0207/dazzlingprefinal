@@ -421,14 +421,14 @@ function CourseCard({ course }) {
       </div>
 
       {/* Content Container */}
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-4 md:p-6 flex flex-col flex-grow">
         {/* Title */}
-        <h3 className="font-playfair-display font-bold text-lg md:text-xl text-[#1D1D1D] mb-3 line-clamp-2">
+        <h3 className="font-playfair-display font-bold text-base md:text-lg lg:text-xl text-[#1D1D1D] mb-2 md:mb-3 line-clamp-2">
           {course.title}
         </h3>
 
         {/* Description */}
-        <p className="font-libre-franklin text-sm text-gray-600 leading-relaxed mb-5 line-clamp-3 flex-grow">
+        <p className="font-libre-franklin text-xs md:text-sm text-gray-600 leading-relaxed mb-4 md:mb-5 line-clamp-3 flex-grow">
           {course.description}
         </p>
 
