@@ -227,12 +227,14 @@ const EnquiryForm: React.FC = () => {
           border-radius: 20px;
           max-height: 90vh;
           overflow-y: auto;
+          overflow-x: hidden;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
           z-index: ${zIndex + 1};
           transform: scale(0.8);
           opacity: 0;
           transition: all 0.3s ease 0.15s;
-          overflow-x: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-behavior: smooth;
         }
 
         .enquiry-overlay-${zIndex}.open .enquiry-panel-${zIndex} {
