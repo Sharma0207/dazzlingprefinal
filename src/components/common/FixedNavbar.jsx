@@ -94,7 +94,7 @@ export default function FixedNavbar() {
           </div>
 
           {/* Right Side - Phone & Enquire Button */}
-          <div className="flex items-center gap-3 md:gap-5">
+          <div className="flex items-center gap-3 md:gap-5 relative z-50">
             <div className="hidden lg:flex items-center gap-2">
               <svg
                 className="w-5 h-5 fill-[#D09163] transition-colors duration-300"
