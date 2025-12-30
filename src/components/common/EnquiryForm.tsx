@@ -52,23 +52,13 @@ const EnquiryForm: React.FC = () => {
   // Prevent body scroll when form is open
   useEffect(() => {
     if (isOpen) {
-      // Disable scrolling on body and html
       document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
     } else {
-      document.body.style.overflow = "unset";
-      document.documentElement.style.overflow = "unset";
-      document.body.style.position = "unset";
-      document.body.style.width = "unset";
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = "unset";
-      document.documentElement.style.overflow = "unset";
-      document.body.style.position = "unset";
-      document.body.style.width = "unset";
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
