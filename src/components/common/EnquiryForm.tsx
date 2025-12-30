@@ -486,9 +486,21 @@ const EnquiryForm: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
+                    aria-busy={isLoading}
+                    aria-label={isLoading ? "Sending your enquiry" : "Send enquiry"}
+                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-300 transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 relative"
                   >
-                    {isLoading ? "Sending..." : "Send Enquiry"}
+                    <span className={`inline-flex items-center gap-2 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+                      Send Enquiry
+                    </span>
+                    {isLoading && (
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="inline-flex items-center gap-2">
+                          <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          Sending...
+                        </span>
+                      </span>
+                    )}
                   </button>
 
                   {/* Privacy Notice */}
