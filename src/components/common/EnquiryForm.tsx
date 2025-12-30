@@ -160,6 +160,10 @@ const EnquiryForm: React.FC = () => {
           width: 90%;
           max-width: 600px;
           background: linear-gradient(135deg, #ffffff 0%, #fef9f5 100%);
+          background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fd555ff5d715946eea839700686a8452e%2F71a6822e50fa4bb9991d93104bfc58c3?format=webp&width=1000');
+          background-size: cover;
+          background-position: center;
+          background-blend-mode: overlay;
           border-radius: 20px;
           max-height: 90vh;
           overflow-y: auto;
