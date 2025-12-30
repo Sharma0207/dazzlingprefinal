@@ -216,7 +216,6 @@ const Life = () => {
                       className="w-full h-full object-cover"
                       autoPlay
                       muted={isMuted}
-                      loop
                       playsInline
                     />
                     {/* Optional Caption Overlay */}
