@@ -18,6 +18,8 @@ export default function Footer() {
           />
         </div>
 
+        {/* Divider Line */}
+        <div className="border-b border-[#707070] pb-8 md:pb-10 mb-8 md:mb-12"></div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-12 pb-12 border-b border-[#707070]">
