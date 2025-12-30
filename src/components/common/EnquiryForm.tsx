@@ -351,9 +351,10 @@ const EnquiryForm: React.FC = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                    disabled={isLoading}
+                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Send Enquiry
+                    {isLoading ? "Sending..." : "Send Enquiry"}
                   </button>
 
                   {/* Privacy Notice */}
