@@ -58,10 +58,10 @@ const galleryImages = [
 ];
 
 const localReels = [
-  { id: "1", src: reel6, caption: "Dazzling Reel 1" },
-  { id: "2", src: reel2, caption: "Dazzling Reel 2" },
-  { id: "3", src: reel3, caption: "Dazzling Reel 3" },
-  { id: "4", src: reel4, caption: "Dazzling Reel 4" },
+  { id: "1", src: reel4, caption: "Dazzling Reel 1" },
+  { id: "2", src: reel6, caption: "Dazzling Reel 2" },
+  { id: "3", src: reel2, caption: "Dazzling Reel 3" },
+  { id: "4", src: reel3, caption: "Dazzling Reel 4" },
   { id: "5", src: reel5, caption: "Dazzling Reel 5" },
   { id: "6", src: reel1, caption: "Dazzling Reel 6" },
 ];
