@@ -307,6 +307,10 @@ const EnquiryForm: React.FC = () => {
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
+            align-items: flex-start;
+            padding-top: 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
           }
 
           .enquiry-overlay-${zIndex}.open {
@@ -315,7 +319,8 @@ const EnquiryForm: React.FC = () => {
 
           .enquiry-panel-${zIndex} {
             width: 95%;
-            max-height: 95vh;
+            max-height: none;
+            min-height: auto;
           }
         }
       `}</style>
