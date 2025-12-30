@@ -31,8 +31,15 @@ const EnquiryForm: React.FC = () => {
       setIsOpen(true);
     };
 
-    window.addEventListener("openEnquiryForm", handleOpenForm);
-    return () => window.removeEventListener("openEnquiryForm", handleOpenForm);
+    // Add a small delay to ensure listener is properly set in strict mode
+    const timeoutId = setTimeout(() => {
+      window.addEventListener("openEnquiryForm", handleOpenForm);
+    }, 0);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("openEnquiryForm", handleOpenForm);
+    };
   }, []);
 
   const closeForm = () => {
