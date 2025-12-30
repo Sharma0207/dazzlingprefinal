@@ -17,49 +17,49 @@ export default function Testimonial() {
       id: 1,
       name: "Priya Sharma",
       role: "Professional Makeup Artist",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/testimonial-1",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
       text: "The comprehensive bridal makeup training was exceptional. The hands-on practice with real clients gave me the confidence to launch my own studio successfully.",
     },
     {
       id: 2,
       name: "Anjali Verma",
       role: "Freelance Beauty Consultant",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/testimonial-2",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
       text: "The international certification was a game-changer for my career. I now work with top luxury salons and have clients worldwide thanks to this training.",
     },
     {
       id: 3,
       name: "Meera Patel",
       role: "Salon Manager",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/testimonial-3",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
       text: "The salon management and business skills course transformed how I run my salon. The expert guidance helped me build a profitable, professional beauty business.",
     },
     {
       id: 4,
       name: "Neha Desai",
       role: "Hair Styling Expert",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/testimonial-4",
+      image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=150&h=150&fit=crop",
       text: "From fundamentals to advanced techniques, the curriculum covered everything. I gained certification and landed my dream job in a luxury spa within weeks.",
     },
     {
       id: 5,
       name: "Ritika Singh",
       role: "Beauty Educator",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/testimonial-5",
+      image: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=150&h=150&fit=crop",
       text: "The trainer program equipped me with skills to teach others. Now I run my own beauty workshops and mentor aspiring artists in my community.",
     },
     {
       id: 6,
       name: "Divya Nair",
       role: "Skincare & Aesthetics Specialist",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/testimonial-6",
+      image: "https://images.unsplash.com/photo-1517841905240-45923602529f?w=150&h=150&fit=crop",
       text: "The skincare science and aesthetics training was incredibly detailed. I now offer professional treatments and my clients are thrilled with the results.",
     },
     {
       id: 7,
       name: "Shreya Gupta",
       role: "Wedding Beauty Specialist",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/testimonial-7",
+      image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&h=150&fit=crop",
       text: "The advanced bridal makeup course gave me the edge I needed. I now handle high-end wedding projects and my portfolio is growing every month.",
     },
   ];
@@ -273,10 +273,6 @@ export default function Testimonial() {
           </div>
         </motion.div>
 
-        {/* Info text */}
-        <p className="text-center text-gray-500 font-libre-franklin text-sm mt-6 md:mt-8">
-          Hover to pause • Scroll continues automatically
-        </p>
       </div>
 
       <style jsx>{`

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 import DoodlePattern from "./DoodlePattern";
 
 // Original Image Imports (kept exactly as before)
@@ -69,6 +69,8 @@ const localReels = [
 const Life = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
   // Auto-rotate images every 4 seconds
   useEffect(() => {
@@ -101,6 +103,19 @@ const Life = () => {
   const goToNextVideo = () => {
     setVideoIndex((prev) => (prev + 1) % localReels.length);
   };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+    }
+  };
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted, videoIndex]);
 
   return (
     <section className="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-[#FFF7F2] to-white">
@@ -194,10 +209,11 @@ const Life = () => {
                     }`}
                   >
                     <video
+                      ref={index === videoIndex ? videoRef : null}
                       src={reel.src}
                       className="w-full h-full object-cover"
                       autoPlay
-                      muted
+                      muted={isMuted}
                       loop
                       playsInline
                     />
@@ -211,9 +227,23 @@ const Life = () => {
                 ))}
               </div>
 
-              {/* Video Counter */}
-              <div className="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
-                {videoIndex + 1} / {localReels.length}
+              {/* Video Counter and Mute Button */}
+              <div className="absolute bottom-4 right-4 flex items-center gap-2">
+                <button
+                  onClick={toggleMute}
+                  className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
+                  aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+                  title={isMuted ? "Click to unmute" : "Click to mute"}
+                >
+                  {isMuted ? (
+                    <VolumeX className="w-5 h-5" />
+                  ) : (
+                    <Volume2 className="w-5 h-5" />
+                  )}
+                </button>
+                <div className="bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
+                  {videoIndex + 1} / {localReels.length}
+                </div>
               </div>
             </div>
 

@@ -63,7 +63,7 @@ export default function FAQ() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12">
           {/* Left Column - Image with Overlay Card */}
           <div className="relative">
-            <div className="relative rounded-3xl overflow-hidden h-96 sm:h-[500px] lg:h-full min-h-96 lg:min-h-[500px] bg-gray-200">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-80 sm:h-[450px] lg:h-full min-h-80 lg:min-h-[500px] bg-gray-200">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/430e272a3288f39222bb38a03dc4d3463ca19fa6?width=1428"
                 alt="Nail technology classroom"
@@ -71,12 +71,12 @@ export default function FAQ() {
               />
 
               {/* Overlay Card */}
-              <div className="absolute inset-0 flex items-end p-6 md:p-8">
-                <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg max-w-sm w-full">
-                  <h3 className="font-playfair-display text-2xl md:text-3xl font-semibold text-black mb-3">
+              <div className="absolute inset-0 flex items-end p-4 sm:p-6 md:p-8">
+                <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 shadow-lg max-w-sm w-full">
+                  <h3 className="font-playfair-display text-xl sm:text-2xl md:text-3xl font-semibold text-black mb-2 sm:mb-3">
                     Still Have Questions?
                   </h3>
-                  <p className="font-libre-franklin text-sm md:text-base text-gray-700 mb-6 leading-relaxed">
+                  <p className="font-libre-franklin text-xs sm:text-sm md:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                     We're here to help—reach out to us for more information!
                   </p>
                   <BookCallButton text="Enquire Now" />
@@ -97,13 +97,13 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => toggleExpand(item.id)}
-                    className="w-full flex items-center justify-between py-5 md:py-6 px-0 hover:text-accent transition-colors text-left group"
+                    className="w-full flex items-center justify-between py-5 md:py-6 px-0 transition-colors text-left group"
                   >
-                    <h3 className="font-roboto text-base md:text-xl font-normal text-gray-800 group-hover:text-accent transition-colors">
+                    <h3 className="font-roboto text-base md:text-xl font-normal text-gray-800 group-hover:text-[#D09163] transition-colors">
                       {item.question}
                     </h3>
                     <ChevronDown
-                      className={`w-6 h-6 md:w-7 md:h-7 text-gray-800 group-hover:text-accent transition-all flex-shrink-0 ${
+                      className={`w-6 h-6 md:w-7 md:h-7 text-gray-800 group-hover:text-[#D09163] transition-all flex-shrink-0 ${
                         expandedId === item.id ? "rotate-180" : ""
                       }`}
                     />

@@ -28,11 +28,17 @@ const EnquiryForm: React.FC = () => {
   // Listen for custom event from navbar button
   useEffect(() => {
     const handleOpenForm = () => {
+      console.log("Enquiry form opened");
       setIsOpen(true);
     };
 
+    const isMounted = { current: true };
     window.addEventListener("openEnquiryForm", handleOpenForm);
-    return () => window.removeEventListener("openEnquiryForm", handleOpenForm);
+
+    return () => {
+      isMounted.current = false;
+      window.removeEventListener("openEnquiryForm", handleOpenForm);
+    };
   }, []);
 
   const closeForm = () => {

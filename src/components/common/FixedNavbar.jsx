@@ -108,13 +108,17 @@ export default function FixedNavbar() {
                 className="font-libre-franklin text-sm font-semibold transition-colors duration-500"
                 style={{ color: textColor }}
               >
-                800 2315 259
+                1800 123 4747
               </span>
             </div>
 
             <button
+              type="button"
               className="px-4 md:px-6 py-2.5 bg-[#1D1D1D] rounded-lg hover:bg-[#2D2D2D] transition-all duration-300 text-white font-libre-franklin text-sm font-bold shadow-md hover:shadow-lg"
-              onClick={() => window.dispatchEvent(new CustomEvent('openEnquiryForm'))}
+              onClick={() => {
+                console.log("Enquire button clicked");
+                window.dispatchEvent(new CustomEvent('openEnquiryForm'));
+              }}
             >
               Enquire
             </button>

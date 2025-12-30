@@ -1,9 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import { openWhatsApp, openWhatsAppWithCourse } from "../../utils/whatsapp";
 
-export default function BookCallButton({ text = "Book A Call", className = "", courseLevel = null }) {
+export default function BookCallButton({ text = "Book A Call", className = "", courseLevel = null, openForm = false }) {
   const handleClick = () => {
-    if (courseLevel) {
+    if (openForm) {
+      window.dispatchEvent(new CustomEvent('openEnquiryForm'));
+    } else if (courseLevel) {
       openWhatsAppWithCourse(undefined, courseLevel);
     } else {
       openWhatsApp();
