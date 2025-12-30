@@ -269,6 +269,7 @@ const EnquiryForm: React.FC = () => {
           className={`enquiry-panel-${zIndex} relative overflow-hidden`}
           onClick={(e) => e.stopPropagation()}
         >
+          <DoodlePattern />
 
           <div className="p-8 md:p-12 relative z-10">
             {/* Close Button */}
