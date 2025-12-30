@@ -1,8 +1,14 @@
 import { ArrowRight } from "lucide-react";
+import { openWhatsApp } from "../../utils/whatsapp";
 
 export default function BookCallButton({ text = "Book A Call", className = "" }) {
+  const handleClick = () => {
+    openWhatsApp();
+  };
+
   return (
     <button
+      onClick={handleClick}
       className={`inline-flex items-center gap-3 bg-white border-2 border-black rounded-full pl-0 pr-[83px] py-[13px] hover:bg-gray-50 transition-colors group relative ${className}`}
     >
       {/* Circle with arrow */}
