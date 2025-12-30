@@ -1,3 +1,14 @@
+// Import course images from assets
+import courseImg1 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.50.41 PM.jpeg";
+import courseImg2 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.50.57 PM.jpeg";
+import courseImg3 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.10 PM.jpeg";
+import courseImg4 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.25 PM.jpeg";
+import courseImg5 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.41 PM.jpeg";
+import courseImg6 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.55 PM.jpeg";
+import courseImg7 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.52.19 PM.jpeg";
+import courseImg8 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.52.39 PM.jpeg";
+import courseImg9 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.52.51 PM.jpeg";
+
 // Course categories
 export const COURSE_CATEGORIES = {
   SKIN: "skin",
@@ -31,7 +42,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BEGINNER,
     mainCourse: MAIN_COURSES.BEGINNER_COSMOTOLOGY,
     price: "₹4,999",
-    image: "https://images.pexels.com/photos/2744193/pexels-photo-2744193.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg1,
     duration: "3 weeks",
   },
   {
@@ -42,7 +53,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BEGINNER,
     mainCourse: MAIN_COURSES.BEGINNER_COSMOTOLOGY,
     price: "₹4,999",
-    image: "https://images.pexels.com/photos/17786008/pexels-photo-17786008.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg7,
     duration: "3 weeks",
   },
   {
@@ -53,7 +64,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BEGINNER,
     mainCourse: MAIN_COURSES.BEGINNER_COSMOTOLOGY,
     price: "₹4,999",
-    image: "https://images.pexels.com/photos/6954217/pexels-photo-6954217.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg3,
     duration: "3 weeks",
   },
 
@@ -66,7 +77,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BASIC,
     mainCourse: MAIN_COURSES.BASIC_COSMOTOLOGY,
     price: "₹8,999",
-    image: "https://images.pexels.com/photos/247196/pexels-photo-247196.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg4,
     duration: "6 weeks",
   },
   {
@@ -77,7 +88,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BASIC,
     mainCourse: MAIN_COURSES.BASIC_COSMOTOLOGY,
     price: "₹9,999",
-    image: "https://images.pexels.com/photos/17042245/pexels-photo-17042245.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg5,
     duration: "7 weeks",
   },
   {
@@ -88,7 +99,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BASIC,
     mainCourse: MAIN_COURSES.BASIC_COSMOTOLOGY,
     price: "₹8,999",
-    image: "https://images.pexels.com/photos/14251997/pexels-photo-14251997.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg6,
     duration: "7 weeks",
   },
   {
@@ -99,7 +110,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BASIC,
     mainCourse: MAIN_COURSES.BASIC_COSMOTOLOGY,
     price: "₹7,999",
-    image: "https://images.pexels.com/photos/16241289/pexels-photo-16241289.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg2,
     duration: "6 weeks",
   },
   {
@@ -110,7 +121,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BASIC,
     mainCourse: MAIN_COURSES.BASIC_COSMOTOLOGY,
     price: "₹6,999",
-    image: "https://images.pexels.com/photos/5128234/pexels-photo-5128234.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg9,
     duration: "5 weeks",
   },
 
@@ -123,7 +134,7 @@ export const coursesData = [
     level: COURSE_LEVELS.ADVANCE,
     mainCourse: MAIN_COURSES.ADVANCE_COSMOTOLOGY,
     price: "₹11,999",
-    image: "https://images.pexels.com/photos/12992074/pexels-photo-12992074.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg8,
     duration: "8 weeks",
   },
   {
@@ -134,7 +145,7 @@ export const coursesData = [
     level: COURSE_LEVELS.ADVANCE,
     mainCourse: MAIN_COURSES.ADVANCE_COSMOTOLOGY,
     price: "₹13,999",
-    image: "https://images.pexels.com/photos/16241289/pexels-photo-16241289.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg1,
     duration: "9 weeks",
   },
   {
@@ -145,7 +156,7 @@ export const coursesData = [
     level: COURSE_LEVELS.ADVANCE,
     mainCourse: MAIN_COURSES.ADVANCE_COSMOTOLOGY,
     price: "₹12,999",
-    image: "https://images.pexels.com/photos/10293685/pexels-photo-10293685.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg2,
     duration: "8 weeks",
   },
 
@@ -158,7 +169,7 @@ export const coursesData = [
     level: COURSE_LEVELS.ADVANCE,
     mainCourse: MAIN_COURSES.ADVANCE_COSMOTOLOGY,
     price: "₹10,999",
-    image: "https://images.pexels.com/photos/12992074/pexels-photo-12992074.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg3,
     duration: "6 weeks",
   },
   {
@@ -169,7 +180,7 @@ export const coursesData = [
     level: COURSE_LEVELS.ADVANCE,
     mainCourse: MAIN_COURSES.ADVANCE_COSMOTOLOGY,
     price: "₹12,999",
-    image: "https://images.pexels.com/photos/17042245/pexels-photo-17042245.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg4,
     duration: "6 weeks",
   },
   {
@@ -180,7 +191,7 @@ export const coursesData = [
     level: COURSE_LEVELS.ADVANCE,
     mainCourse: MAIN_COURSES.ADVANCE_COSMOTOLOGY,
     price: "₹9,999",
-    image: "https://images.pexels.com/photos/247196/pexels-photo-247196.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg5,
     duration: "6 weeks",
   },
 ];

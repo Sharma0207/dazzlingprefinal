@@ -59,9 +59,14 @@ export default function Courses() {
   // Handle responsive slides
   useEffect(() => {
     const updateSlidesToShow = () => {
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth < 768) {
+        // Mobile: 1 slide
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 1024) {
+        // Tablet: 1 slide
         setSlidesToShow(1);
       } else {
+        // Desktop: 3 slides
         setSlidesToShow(3);
       }
     };
@@ -279,13 +284,14 @@ export default function Courses() {
             </motion.button>
 
             {/* Carousel */}
-            <div className="overflow-hidden px-2 md:px-0" ref={carouselRef}>
+            <div className="overflow-hidden w-full" ref={carouselRef}>
               <div
                 style={{
                   display: "flex",
                   gap: "1.5rem",
                   transition: "transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1)",
                   transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
+                  width: "100%",
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -294,9 +300,7 @@ export default function Courses() {
                       key={course.id}
                       className="flex-shrink-0"
                       style={{
-                        width: `calc(${100 / slidesToShow}% - ${
-                          ((slidesToShow - 1) * 24) / slidesToShow
-                        }px)`,
+                        width: slidesToShow === 1 ? "100%" : `calc(${100 / slidesToShow}% - ${((slidesToShow - 1) * 24) / slidesToShow}px)`,
                       }}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
