@@ -201,16 +201,11 @@ const Life = () => {
               style={{ aspectRatio: "9 / 16" }}
             >
               <div className="relative w-full h-full">
-                {localReels.map((reel, index) => (
-                  <div
-                    key={reel.id}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                      index === videoIndex ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
+                {localReels[videoIndex] && (
+                  <div className="absolute inset-0">
                     <video
-                      ref={index === videoIndex ? videoRef : null}
-                      src={reel.src}
+                      ref={videoRef}
+                      src={localReels[videoIndex].src}
                       className="w-full h-full object-cover"
                       autoPlay
                       muted={isMuted}
@@ -220,11 +215,11 @@ const Life = () => {
                     {/* Optional Caption Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                       <p className="text-white text-sm font-medium">
-                        {reel.caption}
+                        {localReels[videoIndex].caption}
                       </p>
                     </div>
                   </div>
-                ))}
+                )}
               </div>
 
               {/* Video Counter and Mute Button */}
