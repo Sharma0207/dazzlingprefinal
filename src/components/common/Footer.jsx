@@ -102,7 +102,7 @@ export default function Footer() {
               <div>
                 <p className="font-plus-jakarta text-[16px] text-[#1D1D1D] leading-[25.6px]">
                   <span className="font-bold">Toll Free:</span>
-                  <span className="font-medium"> 1500 123 4747</span>
+                  <span className="font-medium"> 1800 123 4747</span>
                 </p>
               </div>
             </div>
