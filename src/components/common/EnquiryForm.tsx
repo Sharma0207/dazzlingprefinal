@@ -227,12 +227,14 @@ const EnquiryForm: React.FC = () => {
           border-radius: 20px;
           max-height: 90vh;
           overflow-y: auto;
+          overflow-x: hidden;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
           z-index: ${zIndex + 1};
           transform: scale(0.8);
           opacity: 0;
           transition: all 0.3s ease 0.15s;
-          overflow-x: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-behavior: smooth;
         }
 
         .enquiry-overlay-${zIndex}.open .enquiry-panel-${zIndex} {
@@ -305,6 +307,10 @@ const EnquiryForm: React.FC = () => {
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
+            align-items: flex-start;
+            padding-top: 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
           }
 
           .enquiry-overlay-${zIndex}.open {
@@ -313,7 +319,8 @@ const EnquiryForm: React.FC = () => {
 
           .enquiry-panel-${zIndex} {
             width: 95%;
-            max-height: 95vh;
+            max-height: none;
+            min-height: auto;
           }
         }
       `}</style>

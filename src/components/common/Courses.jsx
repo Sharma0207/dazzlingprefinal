@@ -59,12 +59,12 @@ export default function Courses() {
   // Handle responsive slides
   useEffect(() => {
     const updateSlidesToShow = () => {
-      if (window.innerWidth < 768) {
-        // Mobile: 1 slide
-        setSlidesToShow(1);
+      if (window.innerWidth < 640) {
+        // Small Mobile: 1.5 slides (show next card partially)
+        setSlidesToShow(1.5);
       } else if (window.innerWidth < 1024) {
-        // Tablet: 1 slide
-        setSlidesToShow(1);
+        // Mobile & Tablet: 2 slides
+        setSlidesToShow(2);
       } else {
         // Desktop: 3 slides
         setSlidesToShow(3);
@@ -265,7 +265,7 @@ export default function Courses() {
             {/* Navigation Buttons */}
             <motion.button
               onClick={handlePrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-20 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Previous courses"
@@ -275,7 +275,7 @@ export default function Courses() {
 
             <motion.button
               onClick={handleNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-20 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg hover:bg-[#D09163] hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Next courses"
@@ -283,12 +283,33 @@ export default function Courses() {
               <ChevronRight size={24} />
             </motion.button>
 
+            {/* Mobile Navigation Buttons - Positioned inside carousel area */}
+            <motion.button
+              onClick={handlePrev}
+              className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-md hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Previous courses"
+            >
+              <ChevronLeft size={20} />
+            </motion.button>
+
+            <motion.button
+              onClick={handleNext}
+              className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-md hover:bg-[#D09163] hover:text-white transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Next courses"
+            >
+              <ChevronRight size={20} />
+            </motion.button>
+
             {/* Carousel */}
             <div className="overflow-hidden w-full" ref={carouselRef}>
               <div
                 style={{
                   display: "flex",
-                  gap: "1.5rem",
+                  gap: slidesToShow >= 2 ? "1rem" : "1.5rem",
                   transition: "transform 0.4s cubic-bezier(0.33, 0.66, 0.66, 1)",
                   transform: `translateX(calc(-${currentSlide * (100 / slidesToShow)}%))`,
                   width: "100%",
@@ -375,7 +396,7 @@ function CourseCard({ course }) {
       transition={{ duration: 0.3 }}
     >
       {/* Image Container */}
-      <div className="relative w-full h-48 md:h-56 overflow-hidden bg-gradient-to-br from-[#FFD5BB] to-[#FFF2EA]">
+      <div className="relative w-full h-40 md:h-48 lg:h-56 overflow-hidden bg-gradient-to-br from-[#FFD5BB] to-[#FFF2EA]">
         <img
           src={course.image}
           alt={course.title}
@@ -385,12 +406,12 @@ function CourseCard({ course }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
 
         {/* Badges */}
-        <div className="absolute top-4 right-4 flex flex-col gap-2">
-          <span className="font-libre-franklin text-xs font-semibold text-white bg-[#1D1D1D]/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+        <div className="absolute top-3 right-3 md:top-4 md:right-4 flex flex-col gap-1 md:gap-2">
+          <span className="font-libre-franklin text-xs font-semibold text-white bg-[#1D1D1D]/80 backdrop-blur-sm px-2 md:px-3 py-1 md:py-1.5 rounded-full">
             {course.duration}
           </span>
           <span
-            className={`font-libre-franklin text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm ${getLevelBadgeColor(
+            className={`font-libre-franklin text-xs font-semibold px-2 md:px-3 py-1 md:py-1.5 rounded-full backdrop-blur-sm ${getLevelBadgeColor(
               course.level
             )}`}
           >
@@ -400,31 +421,31 @@ function CourseCard({ course }) {
       </div>
 
       {/* Content Container */}
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-4 md:p-6 flex flex-col flex-grow">
         {/* Title */}
-        <h3 className="font-playfair-display font-bold text-lg md:text-xl text-[#1D1D1D] mb-3 line-clamp-2">
+        <h3 className="font-playfair-display font-bold text-base md:text-lg lg:text-xl text-[#1D1D1D] mb-2 md:mb-3 line-clamp-2">
           {course.title}
         </h3>
 
         {/* Description */}
-        <p className="font-libre-franklin text-sm text-gray-600 leading-relaxed mb-5 line-clamp-3 flex-grow">
+        <p className="font-libre-franklin text-xs md:text-sm text-gray-600 leading-relaxed mb-4 md:mb-5 line-clamp-3 flex-grow">
           {course.description}
         </p>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-gradient-to-r from-[#D09163] to-[#FFD5BB] rounded-full mb-5" />
+        <div className="w-10 md:w-12 h-1 bg-gradient-to-r from-[#D09163] to-[#FFD5BB] rounded-full mb-4 md:mb-5" />
 
         {/* Price Section */}
-        <div className="mb-6">
-          <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-2">
+        <div className="mb-4 md:mb-6">
+          <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-1 md:mb-2">
             Course Price
           </p>
-          <div className="flex flex-col gap-2">
-            <p className="font-playfair-display text-2xl md:text-[26px] font-bold text-gray-400">
+          <div className="flex flex-col gap-1 md:gap-2">
+            <p className="font-playfair-display text-xl md:text-2xl lg:text-[26px] font-bold text-gray-400">
               ₹XXX
             </p>
             <p className="font-libre-franklin text-xs text-[#D09163] font-medium">
-              Enquire to unlock price
+              Enquire for price
             </p>
           </div>
         </div>
@@ -432,7 +453,7 @@ function CourseCard({ course }) {
         {/* CTA Button */}
         <motion.button
           onClick={handleEnquireClick}
-          className="w-full bg-[#1D1D1D] text-white font-plus-jakarta font-bold text-sm py-3 rounded-lg hover:bg-[#424242] transition-colors duration-300"
+          className="w-full bg-[#1D1D1D] text-white font-plus-jakarta font-bold text-xs md:text-sm py-2 md:py-3 rounded-lg hover:bg-[#424242] transition-colors duration-300"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

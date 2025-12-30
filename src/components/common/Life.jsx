@@ -58,10 +58,10 @@ const galleryImages = [
 ];
 
 const localReels = [
-  { id: "1", src: reel6, caption: "Dazzling Reel 1" },
-  { id: "2", src: reel2, caption: "Dazzling Reel 2" },
-  { id: "3", src: reel3, caption: "Dazzling Reel 3" },
-  { id: "4", src: reel4, caption: "Dazzling Reel 4" },
+  { id: "1", src: reel4, caption: "Dazzling Reel 1" },
+  { id: "2", src: reel6, caption: "Dazzling Reel 2" },
+  { id: "3", src: reel2, caption: "Dazzling Reel 3" },
+  { id: "4", src: reel3, caption: "Dazzling Reel 4" },
   { id: "5", src: reel5, caption: "Dazzling Reel 5" },
   { id: "6", src: reel1, caption: "Dazzling Reel 6" },
 ];
@@ -80,13 +80,18 @@ const Life = () => {
     return () => clearInterval(imageTimer);
   }, []);
 
-  // Auto-rotate videos every 10 seconds (longer for real videos)
+  // Auto-rotate videos when current video ends (removed fixed timer to allow full duration)
   useEffect(() => {
-    const videoTimer = setInterval(() => {
+    const handleVideoEnd = () => {
       setVideoIndex((prev) => (prev + 1) % localReels.length);
-    }, 10000);
-    return () => clearInterval(videoTimer);
-  }, []);
+    };
+
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener("ended", handleVideoEnd);
+      return () => video.removeEventListener("ended", handleVideoEnd);
+    }
+  }, [localReels.length]);
 
   const goToPreviousImage = () => {
     setImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
@@ -211,7 +216,6 @@ const Life = () => {
                       className="w-full h-full object-cover"
                       autoPlay
                       muted={isMuted}
-                      loop
                       playsInline
                     />
                     {/* Optional Caption Overlay */}
