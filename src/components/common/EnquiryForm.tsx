@@ -71,24 +71,42 @@ const EnquiryForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    console.log("Form submitted:", formData);
-
-    // Show success message
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        courseInterest: "",
-        message: "",
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      closeForm();
-    }, 2000);
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Show success message
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            courseInterest: "",
+            message: "",
+          });
+          closeForm();
+        }, 2000);
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Network error. Try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Group courses by level
