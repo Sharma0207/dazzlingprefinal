@@ -61,7 +61,7 @@ export default function Footer() {
                 <p className="font-plus-jakarta text-[16px] text-[#1D1D1D] leading-[22.4px]">
                   <span className="font-bold">PATNA CAMPUS</span>
                   <br />
-                  <span className="font-medium">Ganesh Plaza, Raja Garden, Patna - 801503</span>
+                  <span className="font-medium">5th Floor, AP Complex, Bailey Road Near Ranjan Path, Patna, Bihar - 801503</span>
                 </p>
               </div>
               <div>
@@ -96,7 +96,13 @@ export default function Footer() {
               <div>
                 <p className="font-plus-jakarta text-[16px] text-[#1D1D1D] leading-[25.6px]">
                   <span className="font-bold">General/Course Enquiries:</span>
-                  <span className="font-medium"> +91 (0)20 3966 8690 / +91 (0)20 3026 7453/</span>
+                  <span className="font-medium"> +91 7324 012345</span>
+                </p>
+              </div>
+              <div>
+                <p className="font-plus-jakarta text-[16px] text-[#1D1D1D] leading-[25.6px]">
+                  <span className="font-bold">Toll Free:</span>
+                  <span className="font-medium"> 1500 123 4747</span>
                 </p>
               </div>
             </div>
