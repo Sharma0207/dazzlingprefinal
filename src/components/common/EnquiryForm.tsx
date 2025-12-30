@@ -196,6 +196,48 @@ const EnquiryForm: React.FC = () => {
           color: #D09163;
         }
 
+        .form-field-wrapper {
+          position: relative;
+        }
+
+        .form-field-icon {
+          position: absolute;
+          left: 12px;
+          top: 40px;
+          color: #D09163;
+          pointer-events: none;
+        }
+
+        .form-input {
+          padding-left: 40px !important;
+        }
+
+        .doodle-decoration {
+          position: absolute;
+          opacity: 0.05;
+          pointer-events: none;
+        }
+
+        .doodle-top-left {
+          top: -50px;
+          left: -50px;
+          width: 200px;
+          height: 200px;
+        }
+
+        .doodle-bottom-right {
+          bottom: -80px;
+          right: -80px;
+          width: 280px;
+          height: 280px;
+        }
+
+        .header-icon {
+          display: inline-block;
+          margin-right: 10px;
+          color: #D09163;
+        }
+
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
