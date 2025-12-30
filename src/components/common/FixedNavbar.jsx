@@ -116,9 +116,8 @@ export default function FixedNavbar() {
               type="button"
               className="px-4 md:px-6 py-2.5 bg-[#1D1D1D] rounded-lg hover:bg-[#2D2D2D] transition-all duration-300 text-white font-libre-franklin text-sm font-bold shadow-md hover:shadow-lg"
               onClick={() => {
-                const phoneNumber = '917324012345';
-                const whatsappUrl = `https://wa.me/${phoneNumber}`;
-                window.open(whatsappUrl, '_blank');
+                console.log("Enquire button clicked");
+                window.dispatchEvent(new CustomEvent('openEnquiryForm'));
               }}
             >
               Enquire
