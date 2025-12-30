@@ -4,35 +4,80 @@ import founder from "../../../dazzling_images/Teams/founder.jpeg";
 import anchalaMakeup from "../../../dazzling_images/Teams/anchala_makeup.jpeg";
 import riyaMakeup from "../../../dazzling_images/Teams/Riya_makeup.jpeg";
 import swetaHair from "../../../dazzling_images/Teams/sweta_hair.jpeg";
+import menka from "../../assets/dazzling_images/Teams/menka_manager.jpeg";
 
+// const teamMembers = [
+//   {
+//     id: "1",
+//     name: "Meenakshi Shri",
+//     role: "Founder",
+//     image: founder,
+//     bio: "Visionary leader with 10+ years of experience in beauty education and training.",
+//   },
+//   {
+//     id: "2",
+//     name: "Anchala",
+//     role: "Skin faculty ",
+//     image: anchalaMakeup,
+//     bio: "",
+//   },
+//   {
+//     id: "3",
+//     name: "Riya",
+//     role: "Makeup Faculty",
+//     image: riyaMakeup,
+//     bio: "Specializes in modern techniques and client transformation stories.",
+//   },
+//   {
+//     id: "4",
+//     name: "Sweta",
+//     role: "Hair Faculty",
+//     image: swetaHair,
+//     bio: "Master of classic and contemporary hairstyling with years of expertise.",
+//   },
+//   {
+//     id: "5",
+//     name: "Menka Prasad",
+//     role: "Academy manager & placement Counseller",
+//     image: menka,
+//     bio: "Master of classic and contemporary hairstyling with years of salon expertise.",
+//   },
+// ];
 const teamMembers = [
   {
     id: "1",
     name: "Meenakshi Shri",
     role: "Founder",
     image: founder,
-    bio: "Visionary leader with 10+ years of experience in beauty education and training.",
+    bio: "A visionary leader and mentor with over 10 years of experience in beauty education and professional training. She is passionate about empowering students with industry-ready skills and confidence.",
   },
   {
     id: "2",
     name: "Anchala",
-    role: "Senior Makeup Artist & Trainer",
+    role: "Skin Faculty",
     image: anchalaMakeup,
-    bio: "Expert in bridal, editorial, and creative makeup with a passion for teaching.",
+    bio: "An expert in skincare and cosmetology, specializing in advanced skin treatments and personalized skin solutions. She focuses on practical knowledge, hygiene, and client consultation skills.",
   },
   {
     id: "3",
     name: "Riya",
-    role: "Makeup Artist & Educator",
+    role: "Makeup Faculty",
     image: riyaMakeup,
-    bio: "Specializes in modern techniques and client transformation stories.",
+    bio: "A professional makeup artist known for modern techniques, bridal looks, and flawless transformations. She trains students in trending styles, product knowledge, and real-world client handling.",
   },
   {
     id: "4",
     name: "Sweta",
-    role: "Hair Stylist & Trainer",
+    role: "Hair Faculty",
     image: swetaHair,
-    bio: "Master of classic and contemporary hairstyling with years of salon expertise.",
+    bio: "A skilled hair expert with strong expertise in classic and contemporary hairstyling. She guides students in haircutting, styling, hair treatments, and salon-ready techniques.",
+  },
+  {
+    id: "5",
+    name: "Menka Prasad",
+    role: "Academy Manager & Placement Counsellor",
+    image: menka,
+    bio: "Handles academy operations and student placements with professionalism and care. She supports students in career guidance, interview preparation, and placement opportunities in the beauty industry.",
   },
 ];
 
@@ -44,21 +89,31 @@ function Team() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header - Reduced vertical gaps */}
-        <div className="text-center mb-8 md:mb-10 lg:mb-12">  {/* Reduced from mb-12/16/20 */}
-          <p className="font-libre-franklin text-[#D09163] font-semibold text-sm md:text-base uppercase tracking-widest mb-0">  {/* Reduced from mb-4 */}
+        <div className="text-center mb-8 md:mb-10 lg:mb-12">
+          {" "}
+          {/* Reduced from mb-12/16/20 */}
+          <p className="font-libre-franklin text-[#D09163] font-semibold text-sm md:text-base uppercase tracking-widest mb-0">
+            {" "}
+            {/* Reduced from mb-4 */}
             Meet Our Experts
           </p>
           <h2 className="font-playfair-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#424242] leading-tight">
-            Top Management<br />
+            Top Management
+            <br />
             <span className="text-[#D09163]">& Leaders</span>
           </h2>
-          <p className="mt-3 text-lg md:text-xl text-gray-700 font-libre-franklin max-w-3xl mx-auto">  {/* Reduced from mt-6 */}
-            Passionate professionals dedicated to shaping the next generation of beauty experts.
+          <p className="mt-3 text-lg md:text-xl text-gray-700 font-libre-franklin max-w-3xl mx-auto">
+            {" "}
+            {/* Reduced from mt-6 */}
+            Passionate professionals dedicated to shaping the next generation of
+            beauty experts.
           </p>
         </div>
 
         {/* Team Carousel - Reduced gap above */}
-        <div className="mt-4 md:mt-8 lg:mt-10">  {/* Reduced from mt-12/16/20 */}
+        <div className="mt-4 md:mt-8 lg:mt-10">
+          {" "}
+          {/* Reduced from mt-12/16/20 */}
           <TeamCarousel
             members={teamMembers}
             title="OUR TEAM"
