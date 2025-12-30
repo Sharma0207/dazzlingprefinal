@@ -80,12 +80,17 @@ const Life = () => {
     return () => clearInterval(imageTimer);
   }, []);
 
-  // Auto-rotate videos every 10 seconds (longer for real videos)
+  // Auto-rotate videos when current video ends (removed fixed timer to allow full duration)
   useEffect(() => {
-    const videoTimer = setInterval(() => {
+    const handleVideoEnd = () => {
       setVideoIndex((prev) => (prev + 1) % localReels.length);
-    }, 10000);
-    return () => clearInterval(videoTimer);
+    };
+
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener("ended", handleVideoEnd);
+      return () => video.removeEventListener("ended", handleVideoEnd);
+    }
   }, []);
 
   const goToPreviousImage = () => {
