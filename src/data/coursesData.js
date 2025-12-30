@@ -1,3 +1,14 @@
+// Import course images from assets
+import courseImg1 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.50.41 PM.jpeg";
+import courseImg2 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.50.57 PM.jpeg";
+import courseImg3 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.10 PM.jpeg";
+import courseImg4 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.25 PM.jpeg";
+import courseImg5 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.41 PM.jpeg";
+import courseImg6 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.51.55 PM.jpeg";
+import courseImg7 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.52.19 PM.jpeg";
+import courseImg8 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.52.39 PM.jpeg";
+import courseImg9 from "../assets/dazzling_images/courses/WhatsApp Image 2025-12-30 at 1.52.51 PM.jpeg";
+
 // Course categories
 export const COURSE_CATEGORIES = {
   SKIN: "skin",
