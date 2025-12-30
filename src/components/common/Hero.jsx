@@ -104,7 +104,7 @@ export default function Hero() {
                   transition: { duration: 0.3 },
                 }}
               >
-                <img
+                <LazyImage
                   src={image.src}
                   alt={`Gallery image ${index + 1}`}
                   className="w-full h-full object-cover rounded-3xl shadow-lg cursor-pointer"
@@ -139,7 +139,7 @@ export default function Hero() {
                   transition: { duration: 0.3 },
                 }}
               >
-                <img
+                <LazyImage
                   src={image.src}
                   alt={`Gallery image ${index + 1}`}
                   className="w-full h-full object-cover rounded-3xl shadow-lg cursor-pointer"
