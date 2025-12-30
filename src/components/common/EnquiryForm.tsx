@@ -225,9 +225,6 @@ const EnquiryForm: React.FC = () => {
         ref={overlayRef}
         className={`enquiry-overlay-${zIndex} ${isOpen ? "open" : ""}`}
         onClick={closeForm}
-        onWheel={handleOverlayWheel}
-        onTouchMove={handleOverlayTouchMove}
-        style={{ overscrollBehavior: "contain" }}
       >
         {/* Form Panel */}
         <div
