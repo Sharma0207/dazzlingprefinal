@@ -231,6 +231,9 @@ const EnquiryForm: React.FC = () => {
         ref={overlayRef}
         className={`enquiry-overlay-${zIndex} ${isOpen ? "open" : ""}`}
         onClick={closeForm}
+        onWheel={handleOverlayScroll as unknown as React.WheelEventHandler<HTMLDivElement>}
+        onTouchMove={handleOverlayScroll as unknown as React.TouchEventHandler<HTMLDivElement>}
+        style={{ overscrollBehavior: "contain" }}
       >
         {/* Form Panel */}
         <div
