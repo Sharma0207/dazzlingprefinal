@@ -143,7 +143,7 @@ export default function Footer() {
             <div className="rounded-2xl overflow-hidden shadow-lg h-96 w-full">
               <iframe
                 title="Dazzling World Academy Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.5830647509265!2d85.21236222346896!3d25.594959606320934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58f1e1e1e1e1%3A0x1234567890!2s5th%20Floor%2C%20AP%20Complex%2C%20Bailey%20Road%20Near%20Ranjan%20Path%2C%20Patna!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.0815515353404!2d85.05191940771955!3d25.61598811266598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5f1234567890%3A0xabcdef123456!2sDazzling%20World%20Academy%2C%20Patna!5e0!3m2!1sen!2sin!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
