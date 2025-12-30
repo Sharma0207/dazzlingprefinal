@@ -68,13 +68,25 @@ export default function Footer() {
               <div>
                 <p className="font-plus-jakarta text-[16px] text-[#1D1D1D] leading-[25.6px]">
                   <span className="font-bold">General/Course Enquiries:</span>
-                  <span className="font-medium"> +91 7324 012345</span>
+                  <a
+                    href="tel:+917324012345"
+                    className="font-medium text-[#D09163] hover:underline transition-colors"
+                    aria-label="Call for general course enquiries at +91 7324 012345"
+                  >
+                    {" +91 7324 012345"}
+                  </a>
                 </p>
               </div>
               <div>
                 <p className="font-plus-jakarta text-[16px] text-[#1D1D1D] leading-[25.6px]">
                   <span className="font-bold">Toll Free:</span>
-                  <span className="font-medium"> 1800 123 4747</span>
+                  <a
+                    href="tel:+918001234747"
+                    className="font-medium text-[#D09163] hover:underline transition-colors"
+                    aria-label="Call toll-free number 1800 123 4747"
+                  >
+                    {" 1800 123 4747"}
+                  </a>
                 </p>
               </div>
             </div>
