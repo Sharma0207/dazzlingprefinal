@@ -36,7 +36,7 @@ export default function Afterhero() {
             </p>
 
             <div className="mt-auto">
-              <BookCallButton />
+              <BookCallButton openForm={true} />
             </div>
           </div>
 
