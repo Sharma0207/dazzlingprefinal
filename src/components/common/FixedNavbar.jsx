@@ -108,7 +108,7 @@ export default function FixedNavbar() {
                 className="font-libre-franklin text-sm font-semibold transition-colors duration-500"
                 style={{ color: textColor }}
               >
-                800 2315 259
+                1500 123 4747
               </span>
             </div>
 
