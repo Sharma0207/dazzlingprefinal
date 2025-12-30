@@ -28,16 +28,15 @@ const EnquiryForm: React.FC = () => {
   // Listen for custom event from navbar button
   useEffect(() => {
     const handleOpenForm = () => {
+      console.log("Enquiry form opened");
       setIsOpen(true);
     };
 
-    // Add a small delay to ensure listener is properly set in strict mode
-    const timeoutId = setTimeout(() => {
-      window.addEventListener("openEnquiryForm", handleOpenForm);
-    }, 0);
+    const isMounted = { current: true };
+    window.addEventListener("openEnquiryForm", handleOpenForm);
 
     return () => {
-      clearTimeout(timeoutId);
+      isMounted.current = false;
       window.removeEventListener("openEnquiryForm", handleOpenForm);
     };
   }, []);
