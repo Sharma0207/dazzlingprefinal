@@ -97,13 +97,13 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => toggleExpand(item.id)}
-                    className="w-full flex items-center justify-between py-5 md:py-6 px-0 hover:text-accent transition-colors text-left group"
+                    className="w-full flex items-center justify-between py-5 md:py-6 px-0 transition-colors text-left group"
                   >
-                    <h3 className="font-roboto text-base md:text-xl font-normal text-gray-800 group-hover:text-accent transition-colors">
+                    <h3 className="font-roboto text-base md:text-xl font-normal text-gray-800 group-hover:text-[#D09163] transition-colors">
                       {item.question}
                     </h3>
                     <ChevronDown
-                      className={`w-6 h-6 md:w-7 md:h-7 text-gray-800 group-hover:text-accent transition-all flex-shrink-0 ${
+                      className={`w-6 h-6 md:w-7 md:h-7 text-gray-800 group-hover:text-[#D09163] transition-all flex-shrink-0 ${
                         expandedId === item.id ? "rotate-180" : ""
                       }`}
                     />
