@@ -396,7 +396,7 @@ function CourseCard({ course }) {
       transition={{ duration: 0.3 }}
     >
       {/* Image Container */}
-      <div className="relative w-full h-48 md:h-56 overflow-hidden bg-gradient-to-br from-[#FFD5BB] to-[#FFF2EA]">
+      <div className="relative w-full h-40 md:h-48 lg:h-56 overflow-hidden bg-gradient-to-br from-[#FFD5BB] to-[#FFF2EA]">
         <img
           src={course.image}
           alt={course.title}
