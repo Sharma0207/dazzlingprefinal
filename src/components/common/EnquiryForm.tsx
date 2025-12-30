@@ -315,8 +315,9 @@ const EnquiryForm: React.FC = () => {
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <User className="w-4 h-4 text-[#D09163]" />
                       Full Name
                     </label>
                     <input
@@ -326,13 +327,14 @@ const EnquiryForm: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="Your name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     />
                   </div>
 
                   {/* Email */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-[#D09163]" />
                       Email Address
                     </label>
                     <input
@@ -342,13 +344,14 @@ const EnquiryForm: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
                     />
                   </div>
 
                   {/* Phone */}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#424242] mb-2">
+                  <div className="form-field-wrapper">
+                    <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-[#D09163]" />
                       Phone Number
                     </label>
                     <input
