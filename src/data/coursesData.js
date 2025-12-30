@@ -121,7 +121,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BASIC,
     mainCourse: MAIN_COURSES.BASIC_COSMOTOLOGY,
     price: "₹6,999",
-    image: courseImg8,
+    image: courseImg9,
     duration: "5 weeks",
   },
 
@@ -134,7 +134,7 @@ export const coursesData = [
     level: COURSE_LEVELS.ADVANCE,
     mainCourse: MAIN_COURSES.ADVANCE_COSMOTOLOGY,
     price: "₹11,999",
-    image: courseImg9,
+    image: courseImg8,
     duration: "8 weeks",
   },
   {
