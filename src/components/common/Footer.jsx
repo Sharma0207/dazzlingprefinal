@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Youtube } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -135,80 +135,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Newsletter Column */}
+          {/* Google Map Column */}
           <div className="max-w-[472px]">
             <h3 className="font-plus-jakarta text-[18px] font-bold text-[#1D1D1D] leading-[19.8px] mb-4">
-              Newsletter
+              Find Us
             </h3>
-            <p className="font-plus-jakarta text-[16px] font-medium text-[#1D1D1D] leading-[25.6px] mb-4">
-              To get the exclusive news, blogs and events from our academy
-            </p>
-
-            {/* Newsletter Form */}
-            <div className="space-y-4">
-              {/* Privacy Policy Radio Button */}
-              <div className="flex items-center gap-2">
-                <div className="relative">
-                  <input
-                    type="radio"
-                    id="privacy"
-                    name="privacy"
-                    className="peer sr-only"
-                  />
-                  <label
-                    htmlFor="privacy"
-                    className="flex items-center gap-2 cursor-pointer"
-                  >
-                    <div className="w-5 h-5 rounded-full border-[3px] border-[#D09163] bg-[#FEFEFE] flex items-center justify-center peer-checked:bg-[#D09163]">
-                      <div className="w-2 h-2 rounded-full bg-transparent peer-checked:bg-white"></div>
-                    </div>
-                    <span className="font-plus-jakarta text-[16px] font-medium text-[#1D1D1D] leading-[28.8px]">
-                      I agree to the privacy policy.
-                    </span>
-                  </label>
-                </div>
-              </div>
-
-              {/* reCAPTCHA */}
-              <div className="bg-[#F9F9F9] border border-[#D3D3D3] rounded-[3px] p-3 shadow-sm max-w-[304px]">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center">
-                    <div className="w-7 h-7 border-2 border-[#444746] bg-white rounded-sm"></div>
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-roboto text-[14px] text-black leading-[17px]">
-                      I'm not a robot
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/edaa42a7158f1cd6595d61d41db4f9c24d2c9b35?width=64"
-                      alt="reCAPTCHA"
-                      className="w-8 h-8"
-                    />
-                    <span className="font-roboto text-[10px] text-[#555] leading-[10px]">
-                      reCAPTCHA
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-1 text-right">
-                  <span className="font-roboto text-[8px] text-[#555]">
-                    Privacy - Terms
-                  </span>
-                </div>
-              </div>
-
-              {/* Email Input with Signup Button */}
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1 px-4 py-[11px] border border-[#1D1D1D] rounded-l-[20px] font-plus-jakarta text-[15px] font-medium text-[#1D1D1D] placeholder-[#1D1D1D] bg-[#FEFEFE] focus:outline-none focus:ring-2 focus:ring-[#D09163]"
-                />
-                <button className="px-[15.4px] py-[12.73px] bg-[#1D1D1D] text-[#FEFEFE] rounded-r-[20px] font-plus-jakarta font-bold text-[14.4px] leading-[14.4px] hover:bg-[#2D2D2D] transition-colors">
-                  Signup
-                </button>
-              </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg h-96 w-full">
+              <iframe
+                title="Dazzling World Academy Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.5830647509265!2d85.21236222346896!3d25.594959606320934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58f1e1e1e1e1%3A0x1234567890!2s5th%20Floor%2C%20AP%20Complex%2C%20Bailey%20Road%20Near%20Ranjan%20Path%2C%20Patna!5e0!3m2!1sen!2sin!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
