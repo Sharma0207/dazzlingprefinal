@@ -159,7 +159,7 @@ const EnquiryForm: React.FC = () => {
           position: relative;
           width: 90%;
           max-width: 600px;
-          background: white;
+          background: linear-gradient(135deg, #ffffff 0%, #fef9f5 100%);
           border-radius: 20px;
           max-height: 90vh;
           overflow-y: auto;
@@ -168,6 +168,7 @@ const EnquiryForm: React.FC = () => {
           transform: scale(0.8);
           opacity: 0;
           transition: all 0.3s ease 0.15s;
+          overflow-x: hidden;
         }
 
         .enquiry-overlay-${zIndex}.open .enquiry-panel-${zIndex} {
