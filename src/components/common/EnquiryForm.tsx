@@ -323,11 +323,17 @@ const EnquiryForm: React.FC = () => {
         ref={overlayRef}
         className={`enquiry-overlay-${zIndex} ${isOpen ? "open" : ""}`}
         onClick={closeForm}
+        role="presentation"
+        aria-hidden={!isOpen}
       >
         {/* Form Panel */}
         <div
           className={`enquiry-panel-${zIndex} relative overflow-hidden`}
           onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="enquiry-form-title"
+          aria-describedby="enquiry-form-description"
         >
           <DoodlePattern />
 
