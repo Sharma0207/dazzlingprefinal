@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 import DoodlePattern from "./DoodlePattern";
 
 // Original Image Imports (kept exactly as before)
@@ -69,6 +69,8 @@ const localReels = [
 const Life = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
   // Auto-rotate images every 4 seconds
   useEffect(() => {
@@ -101,6 +103,19 @@ const Life = () => {
   const goToNextVideo = () => {
     setVideoIndex((prev) => (prev + 1) % localReels.length);
   };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+    }
+  };
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted, videoIndex]);
 
   return (
     <section className="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-[#FFF7F2] to-white">
