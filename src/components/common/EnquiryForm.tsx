@@ -309,7 +309,7 @@ const EnquiryForm: React.FC = () => {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
             align-items: flex-start;
             padding-top: 20px;
-            overflow-y: auto;
+            overflow: hidden;
             -webkit-overflow-scrolling: touch;
           }
 
@@ -319,8 +319,10 @@ const EnquiryForm: React.FC = () => {
 
           .enquiry-panel-${zIndex} {
             width: 95%;
-            max-height: none;
+            max-height: calc(100vh - 40px);
             min-height: auto;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
           }
         }
       `}</style>
