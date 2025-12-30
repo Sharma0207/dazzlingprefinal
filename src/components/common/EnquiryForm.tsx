@@ -235,6 +235,7 @@ const EnquiryForm: React.FC = () => {
           transition: all 0.3s ease 0.15s;
           -webkit-overflow-scrolling: touch;
           scroll-behavior: smooth;
+          contain: layout style paint;
         }
 
         .enquiry-overlay-${zIndex}.open .enquiry-panel-${zIndex} {
@@ -309,7 +310,7 @@ const EnquiryForm: React.FC = () => {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
             align-items: flex-start;
             padding-top: 20px;
-            overflow: hidden;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
           }
 
@@ -319,10 +320,11 @@ const EnquiryForm: React.FC = () => {
 
           .enquiry-panel-${zIndex} {
             width: 95%;
-            max-height: calc(100vh - 40px);
+            max-height: calc(100vh - 60px);
             min-height: auto;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            margin-bottom: 20px;
           }
         }
       `}</style>
