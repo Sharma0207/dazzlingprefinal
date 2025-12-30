@@ -95,7 +95,11 @@ export default function FixedNavbar() {
 
           {/* Right Side - Phone & Enquire Button */}
           <div className="flex items-center gap-3 md:gap-5 relative" style={{ zIndex: 1001 }}>
-            <div className="hidden lg:flex items-center gap-2">
+            <a
+              href="tel:+918001234747"
+              className="hidden lg:flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
+              aria-label="Call toll-free number 1800 123 4747"
+            >
               <svg
                 className="w-5 h-5 fill-[#D09163] transition-colors duration-300"
                 viewBox="0 0 22 22"
@@ -110,7 +114,7 @@ export default function FixedNavbar() {
               >
                 1800 123 4747
               </span>
-            </div>
+            </a>
 
             <button
               type="button"
