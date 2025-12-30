@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { X, User, Mail, Phone, BookOpen, MessageSquare, Sparkles, Brush, Heart } from "lucide-react";
 import { coursesData } from "../../data/coursesData";
+import DoodlePattern from "./DoodlePattern";
 
 interface FormData {
   name: string;
