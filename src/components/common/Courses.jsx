@@ -433,19 +433,19 @@ function CourseCard({ course }) {
         </p>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-gradient-to-r from-[#D09163] to-[#FFD5BB] rounded-full mb-5" />
+        <div className="w-10 md:w-12 h-1 bg-gradient-to-r from-[#D09163] to-[#FFD5BB] rounded-full mb-4 md:mb-5" />
 
         {/* Price Section */}
-        <div className="mb-6">
-          <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-2">
+        <div className="mb-4 md:mb-6">
+          <p className="font-libre-franklin text-xs text-gray-500 uppercase tracking-wider mb-1 md:mb-2">
             Course Price
           </p>
-          <div className="flex flex-col gap-2">
-            <p className="font-playfair-display text-2xl md:text-[26px] font-bold text-gray-400">
+          <div className="flex flex-col gap-1 md:gap-2">
+            <p className="font-playfair-display text-xl md:text-2xl lg:text-[26px] font-bold text-gray-400">
               ₹XXX
             </p>
             <p className="font-libre-franklin text-xs text-[#D09163] font-medium">
-              Enquire to unlock price
+              Enquire for price
             </p>
           </div>
         </div>
@@ -453,7 +453,7 @@ function CourseCard({ course }) {
         {/* CTA Button */}
         <motion.button
           onClick={handleEnquireClick}
-          className="w-full bg-[#1D1D1D] text-white font-plus-jakarta font-bold text-sm py-3 rounded-lg hover:bg-[#424242] transition-colors duration-300"
+          className="w-full bg-[#1D1D1D] text-white font-plus-jakarta font-bold text-xs md:text-sm py-2 md:py-3 rounded-lg hover:bg-[#424242] transition-colors duration-300"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
