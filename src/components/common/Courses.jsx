@@ -300,9 +300,7 @@ export default function Courses() {
                       key={course.id}
                       className="flex-shrink-0"
                       style={{
-                        width: `calc(${100 / slidesToShow}% - ${
-                          ((slidesToShow - 1) * 24) / slidesToShow
-                        }px)`,
+                        width: slidesToShow === 1 ? "100%" : `calc(${100 / slidesToShow}% - ${((slidesToShow - 1) * 24) / slidesToShow}px)`,
                       }}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
