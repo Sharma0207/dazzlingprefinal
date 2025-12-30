@@ -22,7 +22,17 @@ export default function Afterhero() {
             </h2>
 
             <p className="font-libre-franklin text-[18px] text-black leading-[33px] mb-10 max-w-[633px]">
-              <span className="font-bold">Dazzling World</span> is India's premier beauty academy, dedicated to transforming passion into profession. With over two decades of excellence, we offer comprehensive training in makeup artistry, hairstyling, skincare, and salon management. Our <span className="font-bold">internationally certified courses</span> combine hands-on practice with industry expertise, preparing students for successful careers in the <span className="font-bold">global beauty industry</span>.
+              <span className="font-bold">Dazzling World</span> is India's
+              premier beauty academy, dedicated to transforming passion into
+              profession. With over two decades of excellence, we offer
+              comprehensive training in makeup artistry, hairstyling, skincare,
+              and salon management. Our{" "}
+              <span className="font-bold">
+                internationally certified courses
+              </span>{" "}
+              combine hands-on practice with industry expertise, preparing
+              students for successful careers in the{" "}
+              <span className="font-bold">global beauty industry</span>.
             </p>
 
             <div className="mt-auto">
@@ -38,7 +48,7 @@ export default function Afterhero() {
                 Over
               </p>
               <p className="font-playfair-display text-5xl md:text-6xl lg:text-7xl font-bold text-[#424242] leading-tight">
-                128,000
+                10,000
               </p>
               <p className="font-libre-franklin text-xl md:text-2xl text-[#424242] mt-3">
                 Students Trained
@@ -49,29 +59,46 @@ export default function Afterhero() {
             <div className="grid grid-cols-2 gap-x-8 gap-y-8 lg:gap-x-12">
               {/* 120+ Available Courses */}
               <CounterStat
-                value="120+"
+                value="20+"
                 label="Available Courses"
                 gridClass="col-span-1"
               />
 
               {/* 16 Qualified & Experienced Tutors */}
               <CounterStat
-                value="16"
-                label={<>Qualified &<br />Experienced Tutors</>}
+                value="8"
+                label={
+                  <>
+                    Qualified &<br />
+                    Experienced Tutors
+                  </>
+                }
                 gridClass="col-span-1"
               />
 
               {/* 8 Training Centers */}
               <CounterStat
-                value="8"
-                label={<>Training<br />Centers</>}
+                value="2"
+                label={
+                  <>
+                    Training
+                    <br />
+                    Centers
+                  </>
+                }
                 gridClass="col-span-1"
               />
 
               {/* 35 Years Experience */}
               <CounterStat
-                value="35"
-                label={<>Years<br />Experience</>}
+                value="25"
+                label={
+                  <>
+                    Years
+                    <br />
+                    Experience
+                  </>
+                }
                 gridClass="col-span-1"
               />
             </div>
@@ -79,7 +106,7 @@ export default function Afterhero() {
             {/* Update Date */}
             <div className="mt-auto pt-8">
               <p className="font-libre-franklin text-[17px] font-normal leading-[33px] text-black text-right">
-                Updated as of 31 March 2025
+                Updated as of 31 December 2025
               </p>
             </div>
           </div>
