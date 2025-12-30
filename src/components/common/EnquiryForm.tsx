@@ -15,6 +15,8 @@ const GOOGLE_SCRIPT_URL =
 
 const EnquiryForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -22,7 +24,6 @@ const EnquiryForm: React.FC = () => {
     courseInterest: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const zIndex = 999;
