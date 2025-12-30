@@ -91,7 +91,7 @@ const Life = () => {
       video.addEventListener("ended", handleVideoEnd);
       return () => video.removeEventListener("ended", handleVideoEnd);
     }
-  }, []);
+  }, [localReels.length]);
 
   const goToPreviousImage = () => {
     setImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
