@@ -79,7 +79,7 @@ export default function FAQ() {
                   <p className="font-libre-franklin text-xs sm:text-sm md:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                     We're here to help—reach out to us for more information!
                   </p>
-                  <BookCallButton text="Enquire Now" />
+                  <BookCallButton text="Enquire Now" openForm={true} />
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { X, User, Mail, Phone, BookOpen, MessageSquare, Sparkles, Brush, Heart } from "lucide-react";
 import { coursesData } from "../../data/coursesData";
+import DoodlePattern from "./DoodlePattern";
 
 interface FormData {
   name: string;
@@ -10,13 +11,55 @@ interface FormData {
   message: string;
 }
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  courseInterest?: string;
+  message?: string;
+}
+
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbyeywy4rzA7GOwVYT60hVdrCGb8LbGGycRqYPpRPimxWFpgqr1Z0Nd-EzWNXShiFZ8Z/exec";
+
+// Validation functions
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePhone = (phone: string): boolean => {
+  const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
+  return phoneRegex.test(phone) || phone.length === 0; // Phone is optional
+};
+
+const validateForm = (data: FormData): FormErrors => {
+  const errors: FormErrors = {};
+
+  if (!data.name.trim()) {
+    errors.name = "Name is required";
+  } else if (data.name.trim().length < 2) {
+    errors.name = "Name must be at least 2 characters";
+  }
+
+  if (!data.email.trim()) {
+    errors.email = "Email is required";
+  } else if (!validateEmail(data.email)) {
+    errors.email = "Please enter a valid email";
+  }
+
+  if (data.phone && !validatePhone(data.phone)) {
+    errors.phone = "Please enter a valid phone number";
+  }
+
+  return errors;
+};
 
 const EnquiryForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -83,10 +126,27 @@ const EnquiryForm: React.FC = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Clear error for this field when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate form
+    const newErrors = validateForm(formData);
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -100,6 +160,7 @@ const EnquiryForm: React.FC = () => {
       // With no-cors mode, we can't read the response, so we'll assume success
       // if the request doesn't throw an error
       setIsSubmitted(true);
+      setErrors({});
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -113,7 +174,7 @@ const EnquiryForm: React.FC = () => {
       }, 2000);
     } catch (error) {
       console.error(error);
-      alert("Network error. Try again later.");
+      setErrors({ name: "Network error. Please try again later." });
     } finally {
       setIsLoading(false);
     }
@@ -262,12 +323,19 @@ const EnquiryForm: React.FC = () => {
         ref={overlayRef}
         className={`enquiry-overlay-${zIndex} ${isOpen ? "open" : ""}`}
         onClick={closeForm}
+        role="presentation"
+        aria-hidden={!isOpen}
       >
         {/* Form Panel */}
         <div
           className={`enquiry-panel-${zIndex} relative overflow-hidden`}
           onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="enquiry-form-title"
+          aria-describedby="enquiry-form-description"
         >
+          <DoodlePattern />
 
           <div className="p-8 md:p-12 relative z-10">
             {/* Close Button */}
@@ -298,11 +366,11 @@ const EnquiryForm: React.FC = () => {
               <>
                 {/* Form Header */}
                 <div className="mb-8 mt-8">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
+                  <h2 id="enquiry-form-title" className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
                     <Brush className="w-8 h-8 text-[#D09163]" />
                     Say Hello
                   </h2>
-                  <p className="text-gray-600 flex items-center gap-2">
+                  <p id="enquiry-form-description" className="text-gray-600 flex items-center gap-2">
                     <Heart className="w-4 h-4 text-[#D09163]" />
                     Fill out the form below and we'll get back to you soon.
                   </p>
@@ -321,10 +389,16 @@ const EnquiryForm: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      required
                       placeholder="Your name"
-                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      className={`form-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${
+                        errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-[#D09163]'
+                      }`}
                     />
+                    {errors.name && (
+                      <p id="name-error" className="text-red-500 text-sm mt-1">{errors.name}</p>
+                    )}
                   </div>
 
                   {/* Email */}
@@ -338,10 +412,16 @@ const EnquiryForm: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      required
                       placeholder="your@email.com"
-                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                      className={`form-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${
+                        errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-[#D09163]'
+                      }`}
                     />
+                    {errors.email && (
+                      <p id="email-error" className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    )}
                   </div>
 
                   {/* Phone */}
@@ -356,8 +436,15 @@ const EnquiryForm: React.FC = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+91 000 0000 000"
-                      className="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition"
+                      aria-invalid={!!errors.phone}
+                      aria-describedby={errors.phone ? "phone-error" : undefined}
+                      className={`form-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:border-transparent transition ${
+                        errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-[#D09163]'
+                      }`}
                     />
+                    {errors.phone && (
+                      <p id="phone-error" className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                    )}
                   </div>
 
                   {/* Course Interest */}
@@ -405,9 +492,21 @@ const EnquiryForm: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
+                    aria-busy={isLoading}
+                    aria-label={isLoading ? "Sending your enquiry" : "Send enquiry"}
+                    className="w-full bg-gradient-to-r from-[#D09163] to-[#E8B998] text-white font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-300 transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 relative"
                   >
-                    {isLoading ? "Sending..." : "Send Enquiry"}
+                    <span className={`inline-flex items-center gap-2 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+                      Send Enquiry
+                    </span>
+                    {isLoading && (
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="inline-flex items-center gap-2">
+                          <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          Sending...
+                        </span>
+                      </span>
+                    )}
                   </button>
 
                   {/* Privacy Notice */}

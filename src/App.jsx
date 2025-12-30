@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { useLenis } from "./hooks/useLenis";
 import FixedNavbar from "./components/common/FixedNavbar";
+import ScrollToTop from "./components/common/ScrollToTop";
 import Hero from "./components/common/Hero";
 import Afterhero from "./components/common/Afterhero";
 import Mission from "./components/common/Mission";
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <FixedNavbar />
+      <ScrollToTop />
       <EnquiryForm />
       <div id="hero">
         <Hero />
