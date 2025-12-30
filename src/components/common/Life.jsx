@@ -80,11 +80,11 @@ const Life = () => {
     return () => clearInterval(imageTimer);
   }, []);
 
-  // Auto-rotate videos every 8 seconds (longer for real videos)
+  // Auto-rotate videos every 10 seconds (longer for real videos)
   useEffect(() => {
     const videoTimer = setInterval(() => {
       setVideoIndex((prev) => (prev + 1) % localReels.length);
-    }, 8000);
+    }, 10000);
     return () => clearInterval(videoTimer);
   }, []);
 
