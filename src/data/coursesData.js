@@ -42,7 +42,7 @@ export const coursesData = [
     level: COURSE_LEVELS.BEGINNER,
     mainCourse: MAIN_COURSES.BEGINNER_COSMOTOLOGY,
     price: "₹4,999",
-    image: "https://images.pexels.com/photos/2744193/pexels-photo-2744193.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: courseImg1,
     duration: "3 weeks",
   },
   {
