@@ -46,7 +46,7 @@ export default function Curve() {
 
           {/* Button Row */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8">
-            <BookCallButton text="Book Now" />
+            <BookCallButton text="Book Now" openForm={true} />
 
             {/* Divider */}
             <div className="hidden sm:block w-px h-6 bg-black/60" />
