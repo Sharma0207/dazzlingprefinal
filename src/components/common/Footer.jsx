@@ -18,36 +18,6 @@ export default function Footer() {
           />
         </div>
 
-        {/* Top Navigation Links */}
-        <div className="border-b border-[#707070] pb-8 md:pb-10 mb-8 md:mb-12">
-          <div className="flex flex-wrap justify-center items-center gap-x-0">
-        
-            <a
-              href="#"
-              className="font-plus-jakarta text-[16px] font-medium text-[#1D1D1D] hover:text-[#D09163] transition-colors px-4 py-[11.2px] leading-[16px]"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="font-plus-jakarta text-[16px] font-medium text-[#1D1D1D] hover:text-[#D09163] transition-colors px-4 py-[11.2px] leading-[16px]"
-            >
-              Complaints Policy
-            </a>
-            <a
-              href="#"
-              className="font-plus-jakarta text-[16px] font-medium text-[#1D1D1D] hover:text-[#D09163] transition-colors px-4 py-[11.2px] leading-[16px]"
-            >
-              Terms & Conditions
-            </a>
-            <a
-              href="#"
-              className="font-plus-jakarta text-[16px] font-medium text-[#1D1D1D] hover:text-[#D09163] transition-colors px-4 py-[11.2px] leading-[16px]"
-            >
-              Sitemap
-            </a>
-          </div>
-        </div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-12 pb-12 border-b border-[#707070]">
@@ -143,7 +113,7 @@ export default function Footer() {
             <div className="rounded-2xl overflow-hidden shadow-lg h-96 w-full">
               <iframe
                 title="Dazzling World Academy Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.0815515353404!2d85.05191940771955!3d25.61598811266598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5f1234567890%3A0xabcdef123456!2sDazzling%20World%20Academy%2C%20Patna!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.081551535340!2d85.051919407719!3d25.615988112666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sDazzling%20World%20Academy!2s25.61598811266598%2C%2085.05191940772254!5e0!3m2!1sen!2sin!4v1700000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
