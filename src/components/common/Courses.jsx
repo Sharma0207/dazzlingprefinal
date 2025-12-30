@@ -59,9 +59,14 @@ export default function Courses() {
   // Handle responsive slides
   useEffect(() => {
     const updateSlidesToShow = () => {
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth < 768) {
+        // Mobile: 1 slide
+        setSlidesToShow(1);
+      } else if (window.innerWidth < 1024) {
+        // Tablet: 1 slide
         setSlidesToShow(1);
       } else {
+        // Desktop: 3 slides
         setSlidesToShow(3);
       }
     };
