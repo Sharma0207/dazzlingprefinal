@@ -305,13 +305,32 @@ const EnquiryForm: React.FC = () => {
           color: #D09163;
         }
 
+        .enquiry-form-content {
+          padding: 32px;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        .enquiry-form-header {
+          margin-bottom: 24px;
+          margin-top: 32px;
+        }
+
+        .enquiry-form-fields {
+          flex: 1;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
-            align-items: flex-start;
-            padding-top: 20px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
+            align-items: flex-end;
+            padding: 0;
           }
 
           .enquiry-overlay-${zIndex}.open {
@@ -319,12 +338,97 @@ const EnquiryForm: React.FC = () => {
           }
 
           .enquiry-panel-${zIndex} {
-            width: 95%;
-            max-height: calc(100vh - 60px);
-            min-height: auto;
+            width: 100%;
+            height: 95vh;
+            max-height: 95vh;
+            overflow: hidden;
+            border-radius: 24px 24px 0 0;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .enquiry-panel-${zIndex} > div {
+            padding: 20px 16px 16px 16px !important;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+          }
+
+          .enquiry-form-header {
+            margin-bottom: 12px !important;
+            margin-top: 12px !important;
+            flex-shrink: 0;
+          }
+
+          .enquiry-form-fields {
+            gap: 3px !important;
+            flex: 1;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            margin-bottom: 20px;
+          }
+
+          #enquiry-form-title {
+            font-size: 1.375rem !important;
+            margin-bottom: 4px !important;
+            line-height: 1.2;
+          }
+
+          #enquiry-form-description {
+            font-size: 0.8125rem !important;
+            margin-bottom: 0 !important;
+            line-height: 1.3;
+          }
+
+          .form-field-wrapper label {
+            font-size: 0.8rem !important;
+            margin-bottom: 4px !important;
+          }
+
+          .form-input {
+            padding: 8px 12px !important;
+            font-size: 0.875rem !important;
+            height: 36px;
+          }
+
+          .message-textarea {
+            padding: 8px 12px !important;
+            font-size: 0.875rem !important;
+            height: 70px !important;
+            min-height: 70px !important;
+          }
+
+          .privacy-notice {
+            font-size: 0.7rem !important;
+            margin-top: 8px !important;
+            flex-shrink: 0;
+          }
+
+          button[type="submit"] {
+            padding: 9px 16px !important;
+            font-size: 0.875rem !important;
+            flex-shrink: 0;
+            margin-top: auto;
+          }
+
+          .enquiry-close-btn {
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            padding: 4px;
+          }
+
+          .enquiry-close-btn svg {
+            width: 20px;
+            height: 20px;
+          }
+
+          .header-icon {
+            width: 16px !important;
+            height: 16px !important;
+            margin-right: 6px !important;
           }
         }
       `}</style>
@@ -348,7 +452,7 @@ const EnquiryForm: React.FC = () => {
         >
           <DoodlePattern />
 
-          <div className="p-8 md:p-12 relative z-10">
+          <div className="enquiry-form-content p-8 md:p-12 relative z-10">
             {/* Close Button */}
             <button
               className="enquiry-close-btn"
@@ -376,7 +480,7 @@ const EnquiryForm: React.FC = () => {
             ) : (
               <>
                 {/* Form Header */}
-                <div className="mb-8 mt-8">
+                <div className="enquiry-form-header mb-8 mt-8">
                   <h2 id="enquiry-form-title" className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
                     <Brush className="w-8 h-8 text-[#D09163]" />
                     Say Hello
@@ -388,7 +492,7 @@ const EnquiryForm: React.FC = () => {
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="enquiry-form-fields space-y-6">
                   {/* Name */}
                   <div className="form-field-wrapper">
                     <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
@@ -495,7 +599,7 @@ const EnquiryForm: React.FC = () => {
                       onChange={handleInputChange}
                       placeholder="Tell us about your interests..."
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition resize-none"
+                      className="message-textarea w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition resize-none"
                     />
                   </div>
 
@@ -521,7 +625,7 @@ const EnquiryForm: React.FC = () => {
                   </button>
 
                   {/* Privacy Notice */}
-                  <p className="text-xs text-gray-500 text-center">
+                  <p className="privacy-notice text-xs text-gray-500 text-center">
                     We respect your privacy. Your information will be kept confidential.
                   </p>
                 </form>
