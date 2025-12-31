@@ -349,7 +349,7 @@ const EnquiryForm: React.FC = () => {
           }
 
           .enquiry-panel-${zIndex} > div {
-            padding: 16px 16px !important;
+            padding: 20px 16px 16px 16px !important;
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -358,12 +358,12 @@ const EnquiryForm: React.FC = () => {
 
           .enquiry-form-header {
             margin-bottom: 12px !important;
-            margin-top: 20px !important;
+            margin-top: 12px !important;
             flex-shrink: 0;
           }
 
           .enquiry-form-fields {
-            gap: 12px !important;
+            gap: 10px !important;
             flex: 1;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
