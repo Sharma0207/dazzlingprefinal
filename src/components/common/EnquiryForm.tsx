@@ -305,6 +305,27 @@ const EnquiryForm: React.FC = () => {
           color: #D09163;
         }
 
+        .enquiry-form-content {
+          padding: 32px;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        .enquiry-form-header {
+          margin-bottom: 24px;
+          margin-top: 32px;
+        }
+
+        .enquiry-form-fields {
+          flex: 1;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
