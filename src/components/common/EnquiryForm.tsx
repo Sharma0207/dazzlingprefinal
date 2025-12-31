@@ -549,7 +549,7 @@ const EnquiryForm: React.FC = () => {
                       onChange={handleInputChange}
                       placeholder="Tell us about your interests..."
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition resize-none"
+                      className="message-textarea w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D09163] focus:border-transparent transition resize-none"
                     />
                   </div>
 
