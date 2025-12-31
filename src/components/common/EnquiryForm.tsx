@@ -323,7 +323,7 @@ const EnquiryForm: React.FC = () => {
           -webkit-overflow-scrolling: touch;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 5px;
         }
 
         @media (max-width: 640px) {
