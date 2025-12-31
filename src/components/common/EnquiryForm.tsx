@@ -339,7 +339,7 @@ const EnquiryForm: React.FC = () => {
 
           .enquiry-panel-${zIndex} {
             width: 100%;
-            height: 90vh;
+            height: 95vh;
             max-height: 100vh;
             overflow: hidden;
             border-radius: 24px 24px 0 0;
