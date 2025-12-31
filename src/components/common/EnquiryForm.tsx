@@ -308,8 +308,8 @@ const EnquiryForm: React.FC = () => {
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
-            align-items: flex-start;
-            padding-top: 20px;
+            align-items: center;
+            padding: 0;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
           }
@@ -320,11 +320,65 @@ const EnquiryForm: React.FC = () => {
 
           .enquiry-panel-${zIndex} {
             width: 95%;
-            max-height: calc(100vh - 60px);
-            min-height: auto;
+            max-height: 100vh;
+            height: 100vh;
+            min-height: 100vh;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            margin-bottom: 20px;
+            margin: 0;
+            border-radius: 20px 20px 0 0;
+            max-width: 100%;
+          }
+
+          .enquiry-panel-${zIndex} > div {
+            padding: 16px !important;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+
+          .enquiry-panel-${zIndex} form {
+            gap: 12px !important;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          #enquiry-form-title {
+            font-size: 1.5rem !important;
+            margin-bottom: 4px !important;
+          }
+
+          #enquiry-form-description {
+            font-size: 0.875rem !important;
+            margin-bottom: 16px !important;
+          }
+
+          .form-field-wrapper label {
+            font-size: 0.75rem !important;
+            margin-bottom: 4px !important;
+          }
+
+          .form-input,
+          textarea {
+            padding: 8px 12px !important;
+            font-size: 0.875rem !important;
+          }
+
+          textarea {
+            rows: 2 !important;
+            min-height: 60px !important;
+          }
+
+          button[type="submit"] {
+            padding: 10px 16px !important;
+            font-size: 0.875rem !important;
+            margin-top: auto;
+          }
+
+          .enquiry-close-btn {
+            top: 12px;
+            right: 12px;
           }
         }
       `}</style>
