@@ -380,6 +380,19 @@ const EnquiryForm: React.FC = () => {
           .enquiry-close-btn {
             top: 12px;
             right: 12px;
+            width: 28px;
+            height: 28px;
+          }
+
+          .enquiry-close-btn svg {
+            width: 20px;
+            height: 20px;
+          }
+
+          .header-icon {
+            width: 16px !important;
+            height: 16px !important;
+            margin-right: 6px !important;
           }
         }
       `}</style>
