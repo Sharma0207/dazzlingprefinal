@@ -452,7 +452,7 @@ const EnquiryForm: React.FC = () => {
         >
           <DoodlePattern />
 
-          <div className="p-8 md:p-12 relative z-10">
+          <div className="enquiry-form-content p-8 md:p-12 relative z-10">
             {/* Close Button */}
             <button
               className="enquiry-close-btn"
@@ -480,7 +480,7 @@ const EnquiryForm: React.FC = () => {
             ) : (
               <>
                 {/* Form Header */}
-                <div className="mb-8 mt-8">
+                <div className="enquiry-form-header mb-8 mt-8">
                   <h2 id="enquiry-form-title" className="text-3xl md:text-4xl font-bold text-[#424242] mb-2 flex items-center gap-2">
                     <Brush className="w-8 h-8 text-[#D09163]" />
                     Say Hello
@@ -492,7 +492,7 @@ const EnquiryForm: React.FC = () => {
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="enquiry-form-fields space-y-6">
                   {/* Name */}
                   <div className="form-field-wrapper">
                     <label className="block text-sm font-semibold text-[#424242] mb-2 flex items-center gap-2">
