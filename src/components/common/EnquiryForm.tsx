@@ -363,7 +363,7 @@ const EnquiryForm: React.FC = () => {
           }
 
           .enquiry-form-fields {
-            gap: 1px !important;
+            gap: 5px !important;
             flex: 1;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
