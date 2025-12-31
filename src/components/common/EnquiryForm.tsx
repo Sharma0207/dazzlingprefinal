@@ -359,15 +359,16 @@ const EnquiryForm: React.FC = () => {
             margin-bottom: 4px !important;
           }
 
-          .form-input,
-          textarea {
+          .form-input {
             padding: 8px 12px !important;
             font-size: 0.875rem !important;
           }
 
-          textarea {
-            rows: 2 !important;
-            min-height: 60px !important;
+          .message-textarea {
+            padding: 8px 12px !important;
+            font-size: 0.875rem !important;
+            height: 80px !important;
+            min-height: 80px !important;
           }
 
           button[type="submit"] {
