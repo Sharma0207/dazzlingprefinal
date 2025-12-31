@@ -625,7 +625,7 @@ const EnquiryForm: React.FC = () => {
                   </button>
 
                   {/* Privacy Notice */}
-                  <p className="text-xs text-gray-500 text-center">
+                  <p className="privacy-notice text-xs text-gray-500 text-center">
                     We respect your privacy. Your information will be kept confidential.
                   </p>
                 </form>
