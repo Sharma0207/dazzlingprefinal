@@ -329,10 +329,8 @@ const EnquiryForm: React.FC = () => {
         @media (max-width: 640px) {
           .enquiry-overlay-${zIndex} {
             clip-path: circle(0px at ${buttonPosition.right} ${buttonPosition.top});
-            align-items: center;
+            align-items: flex-end;
             padding: 0;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
           }
 
           .enquiry-overlay-${zIndex}.open {
@@ -340,25 +338,31 @@ const EnquiryForm: React.FC = () => {
           }
 
           .enquiry-panel-${zIndex} {
-            width: 95%;
-            max-height: 100vh;
+            width: 100%;
             height: 100vh;
-            min-height: 100vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 0;
-            border-radius: 20px 20px 0 0;
+            max-height: 100vh;
+            overflow: hidden;
+            border-radius: 24px 24px 0 0;
             max-width: 100%;
+            display: flex;
+            flex-direction: column;
           }
 
           .enquiry-panel-${zIndex} > div {
-            padding: 16px !important;
+            padding: 16px 16px !important;
             display: flex;
             flex-direction: column;
             height: 100%;
+            overflow: hidden;
           }
 
-          .enquiry-panel-${zIndex} form {
+          .enquiry-form-header {
+            margin-bottom: 12px !important;
+            margin-top: 20px !important;
+            flex-shrink: 0;
+          }
+
+          .enquiry-form-fields {
             gap: 12px !important;
             flex: 1;
             overflow-y: auto;
@@ -366,35 +370,45 @@ const EnquiryForm: React.FC = () => {
           }
 
           #enquiry-form-title {
-            font-size: 1.5rem !important;
+            font-size: 1.375rem !important;
             margin-bottom: 4px !important;
+            line-height: 1.2;
           }
 
           #enquiry-form-description {
-            font-size: 0.875rem !important;
-            margin-bottom: 16px !important;
+            font-size: 0.8125rem !important;
+            margin-bottom: 0 !important;
+            line-height: 1.3;
           }
 
           .form-field-wrapper label {
-            font-size: 0.75rem !important;
+            font-size: 0.8rem !important;
             margin-bottom: 4px !important;
           }
 
           .form-input {
             padding: 8px 12px !important;
             font-size: 0.875rem !important;
+            height: 36px;
           }
 
           .message-textarea {
             padding: 8px 12px !important;
             font-size: 0.875rem !important;
-            height: 80px !important;
-            min-height: 80px !important;
+            height: 70px !important;
+            min-height: 70px !important;
+          }
+
+          .privacy-notice {
+            font-size: 0.7rem !important;
+            margin-top: 8px !important;
+            flex-shrink: 0;
           }
 
           button[type="submit"] {
-            padding: 10px 16px !important;
+            padding: 9px 16px !important;
             font-size: 0.875rem !important;
+            flex-shrink: 0;
             margin-top: auto;
           }
 
@@ -403,6 +417,7 @@ const EnquiryForm: React.FC = () => {
             right: 12px;
             width: 28px;
             height: 28px;
+            padding: 4px;
           }
 
           .enquiry-close-btn svg {
