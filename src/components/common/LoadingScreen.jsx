@@ -174,12 +174,12 @@ export default function LoadingScreen({ isLoading }) {
 
           {/* LEFT EYE */}
           {/* Eye white */}
-          <ellipse cx="70" cy="85" rx="12" ry="16" fill="#FFFFFF" stroke="#D09163" strokeWidth="0.5" />
+          <ellipse cx="70" cy="100" rx="12" ry="16" fill="#FFFFFF" stroke="#D09163" strokeWidth="0.5" />
 
           {/* Iris - initially not visible, then appears */}
           <motion.circle
             cx="70"
-            cy="92"
+            cy="107"
             r="7"
             fill="#6B4423"
             initial={{ opacity: 0.3 }}
@@ -190,7 +190,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Pupil */}
           <motion.circle
             cx="70"
-            cy="92"
+            cy="107"
             r="4"
             fill="#1D1D1D"
             initial={{ opacity: 0.3 }}
@@ -201,7 +201,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Eye shine */}
           <motion.circle
             cx="68"
-            cy="89"
+            cy="104"
             r="2"
             fill="#FFFFFF"
             initial={{ opacity: 0.3 }}
@@ -209,11 +209,22 @@ export default function LoadingScreen({ isLoading }) {
             transition={{ duration: 2.5, times: [0, 0.3, 1] }}
           />
 
-          {/* Eye makeup - eyeliner */}
+          {/* Eye makeup - eyeliner upper */}
           <motion.path
-            d="M 58 85 Q 70 80 82 85"
+            d="M 58 100 Q 70 95 82 100"
             stroke="#2C1810"
             strokeWidth="1.5"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
+            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
+          />
+
+          {/* Eye makeup - eyeliner lower */}
+          <motion.path
+            d="M 58 114 Q 70 119 82 114"
+            stroke="#2C1810"
+            strokeWidth="0.8"
             fill="none"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
@@ -223,7 +234,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Eyeshadow */}
           <motion.ellipse
             cx="70"
-            cy="78"
+            cy="92"
             rx="10"
             ry="6"
             fill="url(#eyeMakeupGradient)"
@@ -232,14 +243,26 @@ export default function LoadingScreen({ isLoading }) {
             transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
           />
 
+          {/* Eyebrow left */}
+          <motion.path
+            d="M 58 90 Q 70 85 82 87"
+            stroke="#2D1810"
+            strokeWidth="1.2"
+            fill="none"
+            opacity="0.7"
+            initial={{ opacity: 0.7 }}
+            animate={{ opacity: [0.7, 0.7, 0.9, 0.9] }}
+            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
+          />
+
           {/* RIGHT EYE */}
           {/* Eye white */}
-          <ellipse cx="130" cy="85" rx="12" ry="16" fill="#FFFFFF" stroke="#D09163" strokeWidth="0.5" />
+          <ellipse cx="130" cy="100" rx="12" ry="16" fill="#FFFFFF" stroke="#D09163" strokeWidth="0.5" />
 
           {/* Iris */}
           <motion.circle
             cx="130"
-            cy="92"
+            cy="107"
             r="7"
             fill="#6B4423"
             initial={{ opacity: 0.3 }}
@@ -250,7 +273,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Pupil */}
           <motion.circle
             cx="130"
-            cy="92"
+            cy="107"
             r="4"
             fill="#1D1D1D"
             initial={{ opacity: 0.3 }}
@@ -261,7 +284,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Eye shine */}
           <motion.circle
             cx="128"
-            cy="89"
+            cy="104"
             r="2"
             fill="#FFFFFF"
             initial={{ opacity: 0.3 }}
@@ -269,11 +292,22 @@ export default function LoadingScreen({ isLoading }) {
             transition={{ duration: 2.5, times: [0, 0.3, 1] }}
           />
 
-          {/* Eye makeup - eyeliner */}
+          {/* Eye makeup - eyeliner upper */}
           <motion.path
-            d="M 118 85 Q 130 80 142 85"
+            d="M 118 100 Q 130 95 142 100"
             stroke="#2C1810"
             strokeWidth="1.5"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
+            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
+          />
+
+          {/* Eye makeup - eyeliner lower */}
+          <motion.path
+            d="M 118 114 Q 130 119 142 114"
+            stroke="#2C1810"
+            strokeWidth="0.8"
             fill="none"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
@@ -283,7 +317,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Eyeshadow */}
           <motion.ellipse
             cx="130"
-            cy="78"
+            cy="92"
             rx="10"
             ry="6"
             fill="url(#eyeMakeupGradient)"
@@ -292,34 +326,22 @@ export default function LoadingScreen({ isLoading }) {
             transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
           />
 
-          {/* LEFT CHEEK BLUSH */}
-          <motion.ellipse
-            cx="50"
-            cy="115"
-            rx="15"
-            ry="12"
-            fill="url(#blushGradient)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 0, 0.8, 0.8] }}
-            transition={{ duration: 2.5, times: [0, 0.4, 0.5, 0.65, 1] }}
-          />
-
-          {/* RIGHT CHEEK BLUSH */}
-          <motion.ellipse
-            cx="150"
-            cy="115"
-            rx="15"
-            ry="12"
-            fill="url(#blushGradient)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 0, 0.8, 0.8] }}
-            transition={{ duration: 2.5, times: [0, 0.4, 0.5, 0.65, 1] }}
+          {/* Eyebrow right */}
+          <motion.path
+            d="M 118 90 Q 130 85 142 87"
+            stroke="#2D1810"
+            strokeWidth="1.2"
+            fill="none"
+            opacity="0.7"
+            initial={{ opacity: 0.7 }}
+            animate={{ opacity: [0.7, 0.7, 0.9, 0.9] }}
+            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
           />
 
           {/* MOUTH/LIPS */}
           {/* Upper lip */}
           <motion.path
-            d="M 80 150 Q 100 140 120 150"
+            d="M 80 160 Q 100 152 120 160"
             stroke="url(#lipGradient)"
             strokeWidth="3"
             fill="none"
@@ -331,7 +353,7 @@ export default function LoadingScreen({ isLoading }) {
 
           {/* Lower lip */}
           <motion.path
-            d="M 80 150 Q 100 165 120 150"
+            d="M 80 160 Q 100 172 120 160"
             fill="url(#lipGradient)"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0, 1, 1] }}
@@ -341,7 +363,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Lip shine */}
           <motion.ellipse
             cx="100"
-            cy="155"
+            cy="163"
             rx="10"
             ry="3"
             fill="#FFFFFF"
@@ -351,7 +373,7 @@ export default function LoadingScreen({ isLoading }) {
           />
 
           {/* Nose - simple line */}
-          <line x1="100" y1="95" x2="100" y2="135" stroke="#D09163" strokeWidth="0.5" opacity="0.3" />
+          <line x1="100" y1="105" x2="100" y2="145" stroke="#D09163" strokeWidth="0.5" opacity="0.3" />
 
           {/* Sparkle effects - Final transformation */}
           <motion.g
