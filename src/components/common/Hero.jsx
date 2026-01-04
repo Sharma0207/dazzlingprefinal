@@ -55,7 +55,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="block font-playfair-display text-4xl sm:text-5xl md:text-6xl lg:text-[71px] font-bold leading-tight text-black capitalize">
+          <span className="block font-playfair-display text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-bold leading-tight text-black capitalize">
             Welcome to{" "}
             <motion.span
               className="text-[#D09163]"
