@@ -40,7 +40,7 @@ export default function Footer() {
                 <p className="font-plus-jakarta text-[16px] text-[#1D1D1D] leading-[22.4px]">
                   <span className="font-bold">HYDERABAD CAMPUS</span>
                   <br />
-                  <span className="font-medium">Banjara Hills, Hyderabad - 500034</span>
+                  <span className="font-medium"> abcxyz,Hyderabad - 500034</span>
                 </p>
               </div>
               <div className="flex items-start gap-1">
