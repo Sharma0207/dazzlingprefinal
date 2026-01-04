@@ -264,19 +264,19 @@ export default function LoadingScreen({ isLoading }) {
             <ellipse cx="105" cy="48" rx="5" ry="4" fill="#FFFFFF" opacity="0.6" />
           </motion.g>
 
-          {/* Sparkle effects - Final transformation */}
+          {/* Sparkle effects - Magic moment */}
           <motion.g
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 0, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.6, 0.7, 0.8, 1] }}
+            animate={{ opacity: [0, 0, 0, 1, 0.8, 1] }}
+            transition={{ duration: 2.5, times: [0, 0.5, 0.65, 0.75, 0.9, 1] }}
           >
-            <circle cx="60" cy="70" r="2" fill="#D09163" />
-            <circle cx="140" cy="70" r="2" fill="#D09163" />
-            <circle cx="100" cy="35" r="2.5" fill="#FFD5BB" />
-            <circle cx="50" cy="150" r="1.5" fill="#D09163" />
-            <circle cx="150" cy="150" r="1.5" fill="#FFB6D9" />
-            <circle cx="70" cy="185" r="1.5" fill="#D09163" />
-            <circle cx="130" cy="185" r="1.5" fill="#FFD5BB" />
+            <circle cx="40" cy="50" r="2" fill="#FFD5BB" />
+            <circle cx="180" cy="50" r="2" fill="#D09163" />
+            <circle cx="110" cy="30" r="2.5" fill="#FFB6D9" />
+            <circle cx="30" cy="120" r="1.5" fill="#D09163" />
+            <circle cx="190" cy="140" r="1.5" fill="#FFD5BB" />
+            <circle cx="60" cy="220" r="1.5" fill="#D09163" />
+            <circle cx="160" cy="210" r="1.5" fill="#FFB6D9" />
           </motion.g>
         </motion.svg>
 
