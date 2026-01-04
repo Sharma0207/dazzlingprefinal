@@ -59,7 +59,88 @@
         }
       }
     </style>
-    <title>Dazzling World - Beauty Training Institute</title>
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Dazzling World Academy",
+      "url": "https://www.dazzlingworldacademy.com",
+      "logo": "https://www.dazzlingworldacademy.com/logo.png",
+      "description": "India's Leading Provider of Beauty Training with international certifications",
+      "foundingDate": "2003",
+      "areaServed": {
+        "@type": "GeoShape",
+        "areaIncluded": ["Patna", "Hyderabad", "India"]
+      },
+      "sameAs": [
+        "https://www.instagram.com/dazzlingworldacademy",
+        "https://www.facebook.com/dazzlingworldacademy"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8001234747",
+        "contactType": "Customer Service",
+        "email": "admission@dazlingworld.in"
+      },
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "name": "Patna Campus",
+          "streetAddress": "5th Floor, AP Complex, Bailey Road Near Ranjan Path",
+          "addressLocality": "Patna",
+          "addressRegion": "Bihar",
+          "postalCode": "801503",
+          "addressCountry": "IN"
+        },
+        {
+          "@type": "PostalAddress",
+          "name": "Hyderabad Campus",
+          "streetAddress": "Hyderabad",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "postalCode": "500034",
+          "addressCountry": "IN"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Dazzling World Academy",
+      "image": "https://www.dazzlingworldacademy.com/logo.png",
+      "description": "Professional Beauty Training Institute",
+      "url": "https://www.dazzlingworldacademy.com",
+      "telephone": "+91-8001234747",
+      "priceRange": "$$",
+      "areaServed": ["Patna", "Hyderabad"],
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "International Beauty Certifications",
+        "credentialCategory": "CIDESCO, VTCT, HABIA Certified"
+      }
+    }
+    </script>
+
+    <!-- Aggregate Rating Schema (Replace with actual ratings) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AggregateRating",
+      "name": "Dazzling World Academy",
+      "ratingValue": "4.8",
+      "reviewCount": "1250",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+    </script>
+
+    <title>Dazzling World Academy - Professional Beauty Training Institute</title>
   </head>
   <body>
     <div id="root"></div>
