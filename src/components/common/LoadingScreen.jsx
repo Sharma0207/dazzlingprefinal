@@ -381,11 +381,13 @@ export default function LoadingScreen({ isLoading }) {
             animate={{ opacity: [0, 0, 0, 1, 1] }}
             transition={{ duration: 2.5, times: [0, 0.6, 0.7, 0.8, 1] }}
           >
-            <circle cx="60" cy="60" r="2" fill="#D09163" />
-            <circle cx="140" cy="60" r="2" fill="#D09163" />
-            <circle cx="100" cy="30" r="2.5" fill="#FFD5BB" />
-            <circle cx="50" cy="140" r="1.5" fill="#D09163" />
-            <circle cx="150" cy="140" r="1.5" fill="#FFB6D9" />
+            <circle cx="60" cy="70" r="2" fill="#D09163" />
+            <circle cx="140" cy="70" r="2" fill="#D09163" />
+            <circle cx="100" cy="35" r="2.5" fill="#FFD5BB" />
+            <circle cx="50" cy="150" r="1.5" fill="#D09163" />
+            <circle cx="150" cy="150" r="1.5" fill="#FFB6D9" />
+            <circle cx="70" cy="185" r="1.5" fill="#D09163" />
+            <circle cx="130" cy="185" r="1.5" fill="#FFD5BB" />
           </motion.g>
         </motion.svg>
 
