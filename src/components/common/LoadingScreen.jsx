@@ -98,11 +98,79 @@ export default function LoadingScreen({ isLoading }) {
             transition={{ duration: 2.5, repeat: Infinity, times: [0, 0.5, 1] }}
           />
 
+          {/* HAIR - Long flowing hair */}
+          {/* Hair left side */}
+          <path
+            d="M 50 90 Q 40 100 38 130 Q 36 160 45 175 Q 55 185 65 180 Q 70 120 50 90"
+            fill="#3D2817"
+          />
+
+          {/* Hair right side */}
+          <path
+            d="M 150 90 Q 160 100 162 130 Q 164 160 155 175 Q 145 185 135 180 Q 130 120 150 90"
+            fill="#3D2817"
+          />
+
+          {/* Hair back/top */}
+          <ellipse cx="100" cy="40" rx="58" ry="45" fill="#2D1810" />
+
+          {/* Hair front left flowing */}
+          <path
+            d="M 65 50 Q 55 70 52 100 Q 50 120 55 140"
+            stroke="#3D2817"
+            strokeWidth="4"
+            fill="none"
+            opacity="0.8"
+            strokeLinecap="round"
+          />
+
+          {/* Hair front right flowing */}
+          <path
+            d="M 135 50 Q 145 70 148 100 Q 150 120 145 140"
+            stroke="#3D2817"
+            strokeWidth="4"
+            fill="none"
+            opacity="0.8"
+            strokeLinecap="round"
+          />
+
+          {/* Hair strand texture - left */}
+          <path
+            d="M 60 55 Q 50 80 48 110"
+            stroke="#2D1810"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.5"
+            strokeLinecap="round"
+          />
+
+          {/* Hair strand texture - right */}
+          <path
+            d="M 140 55 Q 150 80 152 110"
+            stroke="#2D1810"
+            strokeWidth="2"
+            fill="none"
+            opacity="0.5"
+            strokeLinecap="round"
+          />
+
+          {/* Hair center parting */}
+          <path
+            d="M 100 35 Q 100 50 100 70"
+            stroke="#2D1810"
+            strokeWidth="1.5"
+            fill="none"
+            opacity="0.3"
+          />
+
+          {/* Hair shine/highlight */}
+          <ellipse cx="80" cy="55" rx="12" ry="18" fill="#4A3020" opacity="0.4" />
+
           {/* Face Head - Oval shape */}
-          <ellipse cx="100" cy="100" rx="55" ry="70" fill="url(#skinGradient)" stroke="#D09163" strokeWidth="1.5" opacity="0.3" />
+          <ellipse cx="100" cy="110" rx="52" ry="65" fill="url(#skinGradient)" stroke="#D09163" strokeWidth="1.5" opacity="0.3" />
 
           {/* Face highlight/shadow for depth */}
-          <ellipse cx="75" cy="80" rx="25" ry="35" fill="#FFFFFF" opacity="0.1" />
+          <ellipse cx="78" cy="95" rx="22" ry="30" fill="#FFFFFF" opacity="0.1" />
 
           {/* LEFT EYE */}
           {/* Eye white */}
