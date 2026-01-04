@@ -1,0 +1,53 @@
+# Dazzling World Academy - Robots.txt
+# Last Updated: January 4, 2025
+
+# Allow all search engines
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /favicon.svg
+Allow: /sitemap.xml
+
+# Allow specific crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# Block bad bots (optional - add as needed)
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 1
+
+# Specify sitemap location
+Sitemap: https://www.dazzlingworldacademy.com/sitemap.xml
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /temp/
+
+# Allow crawling of assets
+Allow: *.js
+Allow: *.css
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+Allow: *.svg
+Allow: *.webp
