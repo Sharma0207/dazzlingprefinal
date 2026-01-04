@@ -114,208 +114,155 @@ export default function LoadingScreen({ isLoading }) {
           {/* Handle on bag */}
           <path d="M 60 80 Q 110 40 160 80" fill="none" stroke="#B8A89A" strokeWidth="3" opacity="0.6" />
 
-          {/* LEFT EYE */}
-          {/* Eye white */}
-          <ellipse cx="70" cy="100" rx="12" ry="16" fill="#FFFFFF" stroke="#D09163" strokeWidth="0.5" />
-
-          {/* Iris - initially not visible, then appears */}
+          {/* ZIPPER - Opening animation */}
+          {/* Zipper slider */}
           <motion.circle
-            cx="70"
-            cy="107"
-            r="7"
-            fill="#6B4423"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: [0.3, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.3, 1] }}
-          />
-
-          {/* Pupil */}
-          <motion.circle
-            cx="70"
-            cy="107"
+            cx="110"
+            cy="80"
             r="4"
-            fill="#1D1D1D"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: [0.3, 1, 1] }}
+            fill="#A8916E"
+            stroke="#8B7355"
+            strokeWidth="1"
+            animate={{ y: [0, 30, 30] }}
             transition={{ duration: 2.5, times: [0, 0.3, 1] }}
           />
 
-          {/* Eye shine */}
-          <motion.circle
-            cx="68"
-            cy="104"
-            r="2"
-            fill="#FFFFFF"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: [0.3, 1, 1] }}
+          {/* Zipper left side */}
+          <motion.path
+            d="M 100 80 L 100 170"
+            stroke="#B8A89A"
+            strokeWidth="2"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: [1, 0.3, 0.3] }}
             transition={{ duration: 2.5, times: [0, 0.3, 1] }}
           />
 
-          {/* Eye makeup - eyeliner upper */}
+          {/* Zipper right side */}
           <motion.path
-            d="M 58 100 Q 70 95 82 100"
-            stroke="#2C1810"
-            strokeWidth="1.5"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
-
-          {/* Eye makeup - eyeliner lower */}
-          <motion.path
-            d="M 58 114 Q 70 119 82 114"
-            stroke="#2C1810"
-            strokeWidth="0.8"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
-
-          {/* Eyeshadow */}
-          <motion.ellipse
-            cx="70"
-            cy="92"
-            rx="10"
-            ry="6"
-            fill="url(#eyeMakeupGradient)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 0.6, 0.6] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
-
-          {/* Eyebrow left */}
-          <motion.path
-            d="M 58 90 Q 70 85 82 87"
-            stroke="#2D1810"
-            strokeWidth="1.2"
-            fill="none"
-            opacity="0.7"
-            initial={{ opacity: 0.7 }}
-            animate={{ opacity: [0.7, 0.7, 0.9, 0.9] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
-
-          {/* RIGHT EYE */}
-          {/* Eye white */}
-          <ellipse cx="130" cy="100" rx="12" ry="16" fill="#FFFFFF" stroke="#D09163" strokeWidth="0.5" />
-
-          {/* Iris */}
-          <motion.circle
-            cx="130"
-            cy="107"
-            r="7"
-            fill="#6B4423"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: [0.3, 1, 1] }}
+            d="M 120 80 L 120 170"
+            stroke="#B8A89A"
+            strokeWidth="2"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: [1, 0.3, 0.3] }}
             transition={{ duration: 2.5, times: [0, 0.3, 1] }}
           />
 
-          {/* Pupil */}
-          <motion.circle
-            cx="130"
-            cy="107"
-            r="4"
-            fill="#1D1D1D"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: [0.3, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.3, 1] }}
-          />
+          {/* MAKEUP ITEM 1 - Lipstick (Left) */}
+          <motion.g
+            initial={{ x: 0, y: 0, rotate: 0, opacity: 0 }}
+            animate={{
+              x: [-40, -50],
+              y: [130, 80],
+              rotate: [-20, -35],
+              opacity: [0, 1, 1]
+            }}
+            transition={{ duration: 2.5, times: [0, 0.35, 1] }}
+          >
+            {/* Lipstick bullet */}
+            <path
+              d="M 45 85 Q 45 70 55 65 Q 65 70 65 85 L 65 115 Q 65 120 55 123 Q 45 120 45 115 Z"
+              fill="#E91E63"
+            />
+            {/* Tube */}
+            <rect x="45" y="115" width="20" height="30" fill="#D9C3A8" rx="1" />
+          </motion.g>
 
-          {/* Eye shine */}
-          <motion.circle
-            cx="128"
-            cy="104"
-            r="2"
-            fill="#FFFFFF"
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: [0.3, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.3, 1] }}
-          />
+          {/* MAKEUP ITEM 2 - Eyeshadow Palette (Center) */}
+          <motion.g
+            initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
+            animate={{
+              x: [0, 0],
+              y: [140, 70],
+              scale: [0, 1, 1],
+              opacity: [0, 1, 1]
+            }}
+            transition={{ duration: 2.5, times: [0, 0.4, 1] }}
+          >
+            {/* Palette base */}
+            <circle cx="110" cy="90" r="22" fill="#F5E6D3" stroke="#D9C3A8" strokeWidth="1.5" />
+            {/* Color swatch 1 */}
+            <circle cx="100" cy="80" r="6" fill="#FFB6D9" />
+            {/* Color swatch 2 */}
+            <circle cx="120" cy="80" r="6" fill="#D09163" />
+            {/* Color swatch 3 */}
+            <circle cx="100" cy="100" r="6" fill="#2C1810" />
+            {/* Color swatch 4 */}
+            <circle cx="120" cy="100" r="6" fill="#8B4513" />
+            {/* Highlight */}
+            <circle cx="115" cy="85" r="3" fill="#FFFFFF" opacity="0.5" />
+          </motion.g>
 
-          {/* Eye makeup - eyeliner upper */}
-          <motion.path
-            d="M 118 100 Q 130 95 142 100"
-            stroke="#2C1810"
-            strokeWidth="1.5"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
+          {/* MAKEUP ITEM 3 - Makeup Brush (Right) */}
+          <motion.g
+            initial={{ x: 0, y: 0, rotate: 0, opacity: 0 }}
+            animate={{
+              x: [40, 50],
+              y: [130, 75],
+              rotate: [20, 35],
+              opacity: [0, 1, 1]
+            }}
+            transition={{ duration: 2.5, times: [0, 0.35, 1] }}
+          >
+            {/* Bristles */}
+            <ellipse cx="160" cy="70" rx="6" ry="12" fill="#D09163" opacity="0.8" />
+            {/* Ferrule */}
+            <rect x="154" y="82" width="12" height="6" fill="#C9A87C" />
+            {/* Handle */}
+            <rect x="156" y="88" width="8" height="28" fill="#2D1810" rx="4" />
+          </motion.g>
 
-          {/* Eye makeup - eyeliner lower */}
-          <motion.path
-            d="M 118 114 Q 130 119 142 114"
-            stroke="#2C1810"
-            strokeWidth="0.8"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
+          {/* MAKEUP ITEM 4 - Mascara (Bottom Left) */}
+          <motion.g
+            initial={{ x: 0, y: 0, opacity: 0 }}
+            animate={{
+              x: [-45, -55],
+              y: [145, 120],
+              opacity: [0, 1, 1]
+            }}
+            transition={{ duration: 2.5, times: [0, 0.45, 1] }}
+          >
+            {/* Tube */}
+            <rect x="40" y="115" width="8" height="25" fill="#1D1D1D" rx="2" />
+            {/* Brush wand */}
+            <line x1="44" y1="140" x2="44" y2="150" stroke="#1D1D1D" strokeWidth="1.5" />
+          </motion.g>
 
-          {/* Eyeshadow */}
-          <motion.ellipse
-            cx="130"
-            cy="92"
-            rx="10"
-            ry="6"
-            fill="url(#eyeMakeupGradient)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 0.6, 0.6] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
+          {/* MAKEUP ITEM 5 - Perfume/Highlighter (Bottom Right) */}
+          <motion.g
+            initial={{ x: 0, y: 0, opacity: 0 }}
+            animate={{
+              x: [45, 55],
+              y: [150, 125],
+              opacity: [0, 1, 1]
+            }}
+            transition={{ duration: 2.5, times: [0, 0.45, 1] }}
+          >
+            {/* Bottle */}
+            <rect x="170" y="120" width="10" height="20" fill="#FFD5BB" stroke="#D09163" strokeWidth="1" rx="1" />
+            {/* Cap */}
+            <rect x="169" y="115" width="12" height="5" fill="#D09163" rx="1" />
+            {/* Shine */}
+            <rect x="172" y="120" width="2" height="18" fill="#FFFFFF" opacity="0.4" />
+          </motion.g>
 
-          {/* Eyebrow right */}
-          <motion.path
-            d="M 118 90 Q 130 85 142 87"
-            stroke="#2D1810"
-            strokeWidth="1.2"
-            fill="none"
-            opacity="0.7"
-            initial={{ opacity: 0.7 }}
-            animate={{ opacity: [0.7, 0.7, 0.9, 0.9] }}
-            transition={{ duration: 2.5, times: [0, 0.2, 0.35, 1] }}
-          />
-
-          {/* MOUTH/LIPS */}
-          {/* Upper lip */}
-          <motion.path
-            d="M 80 160 Q 100 152 120 160"
-            stroke="url(#lipGradient)"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 0, 1, 1], opacity: [0, 0, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.5, 0.7, 1] }}
-          />
-
-          {/* Lower lip */}
-          <motion.path
-            d="M 80 160 Q 100 172 120 160"
-            fill="url(#lipGradient)"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 1, 1] }}
-            transition={{ duration: 2.5, times: [0, 0.5, 0.7, 1] }}
-          />
-
-          {/* Lip shine */}
-          <motion.ellipse
-            cx="100"
-            cy="163"
-            rx="10"
-            ry="3"
-            fill="#FFFFFF"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 0, 0.5, 0.5] }}
-            transition={{ duration: 2.5, times: [0, 0.5, 0.65, 0.75, 1] }}
-          />
-
-          {/* Nose - simple line */}
-          <line x1="100" y1="105" x2="100" y2="145" stroke="#D09163" strokeWidth="0.5" opacity="0.3" />
+          {/* MAKEUP ITEM 6 - Blush Compact (Top Center) */}
+          <motion.g
+            initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
+            animate={{
+              x: [0, 0],
+              y: [120, 45],
+              scale: [0, 1, 1],
+              opacity: [0, 1, 1]
+            }}
+            transition={{ duration: 2.5, times: [0, 0.5, 1] }}
+          >
+            {/* Compact base */}
+            <circle cx="110" cy="55" r="18" fill="#E8D4C0" stroke="#D9C3A8" strokeWidth="1.5" />
+            {/* Blush color */}
+            <circle cx="110" cy="55" r="14" fill="#FFB6D9" />
+            {/* Highlight line */}
+            <ellipse cx="105" cy="48" rx="5" ry="4" fill="#FFFFFF" opacity="0.6" />
+          </motion.g>
 
           {/* Sparkle effects - Final transformation */}
           <motion.g
