@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { useLenis } from "./hooks/useLenis";
 import FixedNavbar from "./components/common/FixedNavbar";
 import ScrollToTop from "./components/common/ScrollToTop";
+import LoadingScreen from "./components/common/LoadingScreen";
 import Hero from "./components/common/Hero";
 import Afterhero from "./components/common/Afterhero";
 import Mission from "./components/common/Mission";
@@ -19,8 +20,19 @@ import Testimonial from "./components/common/Testimonial";
 import EnquiryForm from "./components/common/EnquiryForm";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   // Initialize smooth scroll with Lenis
   useLenis();
+
+  // Simulate loading time and then hide loading screen
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500); // Show loading screen for 2.5 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="App">
