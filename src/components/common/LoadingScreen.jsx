@@ -48,69 +48,147 @@ export default function LoadingScreen({ isLoading }) {
       <div className="relative z-10 flex flex-col items-center justify-center gap-8">
         {/* Makeup Brush Animation */}
         <motion.svg
-          width="120"
-          height="200"
-          viewBox="0 0 120 200"
-          className="drop-shadow-lg"
+          width="140"
+          height="240"
+          viewBox="0 0 140 240"
+          className="drop-shadow-2xl"
           initial={{ y: 0 }}
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         >
-          {/* Brush bristles */}
+          <defs>
+            {/* Gradients for realistic shading */}
+            <linearGradient id="brushGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#E8B5A0" />
+              <stop offset="50%" stopColor="#D09163" />
+              <stop offset="100%" stopColor="#C87F52" />
+            </linearGradient>
+
+            <radialGradient id="bristleGradient" cx="30%" cy="30%">
+              <stop offset="0%" stopColor="#E8C9B8" opacity="0.9" />
+              <stop offset="60%" stopColor="#D09163" />
+              <stop offset="100%" stopColor="#B87540" />
+            </radialGradient>
+
+            <linearGradient id="ferruleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#E8C4A0" />
+              <stop offset="50%" stopColor="#D4A870" />
+              <stop offset="100%" stopColor="#A87840" />
+            </linearGradient>
+
+            <linearGradient id="handleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3D2817" />
+              <stop offset="50%" stopColor="#2D1810" />
+              <stop offset="100%" stopColor="#1D0E08" />
+            </linearGradient>
+          </defs>
+
+          {/* Brush Bristles - Main shape */}
           <motion.g
-            initial={{ scaleY: 0.8 }}
-            animate={{ scaleY: [0.8, 1, 0.8] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            style={{ transformOrigin: "60px 40px" }}
+            initial={{ scaleY: 0.9 }}
+            animate={{ scaleY: [0.9, 1.05, 0.9] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            style={{ transformOrigin: "70px 45px" }}
           >
-            {/* Bristle texture - multiple strokes */}
-            <ellipse cx="60" cy="35" rx="22" ry="28" fill="#D09163" opacity="0.9" />
-            
-            {/* Highlight on bristles */}
-            <ellipse cx="55" cy="25" rx="12" ry="15" fill="#FFE4C4" opacity="0.6" />
-            
-            {/* Individual bristle lines */}
-            <line x1="45" y1="50" x2="48" y2="65" stroke="#D09163" strokeWidth="1.5" opacity="0.7" />
-            <line x1="60" y1="53" x2="60" y2="70" stroke="#D09163" strokeWidth="1.5" opacity="0.7" />
-            <line x1="75" y1="50" x2="72" y2="65" stroke="#D09163" strokeWidth="1.5" opacity="0.7" />
-            <line x1="50" y1="48" x2="50" y2="68" stroke="#D09163" strokeWidth="1" opacity="0.5" />
-            <line x1="70" y1="48" x2="70" y2="68" stroke="#D09163" strokeWidth="1" opacity="0.5" />
+            {/* Main bristle body - fluffier shape */}
+            <ellipse cx="70" cy="50" rx="26" ry="35" fill="url(#bristleGradient)" />
+
+            {/* Left side bristles */}
+            <ellipse cx="48" cy="42" rx="8" ry="24" fill="url(#bristleGradient)" opacity="0.85" />
+            <ellipse cx="42" cy="55" rx="6" ry="20" fill="url(#bristleGradient)" opacity="0.7" />
+
+            {/* Right side bristles */}
+            <ellipse cx="92" cy="42" rx="8" ry="24" fill="url(#bristleGradient)" opacity="0.85" />
+            <ellipse cx="98" cy="55" rx="6" ry="20" fill="url(#bristleGradient)" opacity="0.7" />
+
+            {/* Top highlight - light reflection */}
+            <ellipse cx="65" cy="25" rx="14" ry="12" fill="#FFF5E6" opacity="0.5" />
+
+            {/* Individual bristle strands for texture */}
+            <g opacity="0.4" stroke="#B87540" strokeWidth="0.8">
+              <path d="M 55 50 Q 52 60 50 75" />
+              <path d="M 65 48 Q 64 62 63 80" />
+              <path d="M 75 48 Q 76 62 77 80" />
+              <path d="M 85 50 Q 88 60 90 75" />
+              <path d="M 70 48 Q 70 65 71 82" />
+              <path d="M 50 58 Q 48 70 47 85" />
+              <path d="M 90 58 Q 92 70 93 85" />
+            </g>
+
+            {/* Bottom bristle texture lines */}
+            <g opacity="0.3" stroke="#D09163" strokeWidth="0.6">
+              <path d="M 58 75 L 56 90" />
+              <path d="M 70 78 L 70 95" />
+              <path d="M 82 75 L 84 90" />
+              <path d="M 48 80 L 46 95" />
+              <path d="M 92 80 L 94 95" />
+            </g>
           </motion.g>
 
-          {/* Brush ferrule (metal part) */}
-          <rect x="50" y="62" width="20" height="12" fill="#C0A080" rx="2" />
-          <rect x="50" y="62" width="20" height="3" fill="#D4AF9F" opacity="0.6" />
+          {/* Ferrule (Metal Band) - More realistic */}
+          <g>
+            {/* Main ferrule cylinder */}
+            <rect x="48" y="85" width="44" height="14" fill="url(#ferruleGradient)" rx="1" />
 
-          {/* Brush handle */}
+            {/* Top rim highlight */}
+            <ellipse cx="70" cy="85" rx="22" ry="3" fill="#F5E6D3" opacity="0.7" />
+
+            {/* Bottom shadow */}
+            <ellipse cx="70" cy="99" rx="22" ry="2" fill="#8B5E3C" opacity="0.4" />
+
+            {/* Vertical grooves/texture */}
+            <g stroke="#A87840" strokeWidth="0.5" opacity="0.3">
+              <line x1="58" y1="85" x2="58" y2="99" />
+              <line x1="70" y1="85" x2="70" y2="99" />
+              <line x1="82" y1="85" x2="82" y2="99" />
+            </g>
+          </g>
+
+          {/* Brush Handle - Wooden texture */}
           <motion.g
-            animate={{ rotate: [-5, 5, -5] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            style={{ transformOrigin: "60px 80px" }}
+            animate={{ rotate: [-4, 4, -4] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            style={{ transformOrigin: "70px 105px" }}
           >
-            <rect x="54" y="74" width="12" height="90" fill="#2D1810" rx="6" />
-            
-            {/* Handle highlight */}
-            <rect x="55" y="75" width="4" height="85" fill="#4A2C1F" opacity="0.7" rx="2" />
-            
-            {/* Decorative band */}
-            <rect x="52" y="140" width="16" height="4" fill="#D09163" />
+            {/* Main handle */}
+            <rect x="62" y="99" width="16" height="110" fill="url(#handleGradient)" rx="8" />
+
+            {/* Light reflection on handle */}
+            <rect x="65" y="100" width="3" height="105" fill="#4A3020" opacity="0.5" rx="2" />
+
+            {/* Wood grain texture */}
+            <g opacity="0.2" stroke="#1D0E08" strokeWidth="0.5">
+              <path d="M 62 120 Q 70 120 78 120" />
+              <path d="M 62 140 Q 70 142 78 140" />
+              <path d="M 62 160 Q 70 158 78 160" />
+              <path d="M 62 180 Q 70 182 78 180" />
+            </g>
+
+            {/* Decorative band near top */}
+            <rect x="60" y="155" width="20" height="5" fill="#D09163" rx="2" />
+            <ellipse cx="70" cy="155" rx="10" ry="2" fill="#E8B5A0" opacity="0.6" />
+            <ellipse cx="70" cy="160" rx="10" ry="2" fill="#B87540" opacity="0.4" />
+
+            {/* Handle end (base) */}
+            <circle cx="70" cy="209" r="9" fill="#2D1810" />
+            <circle cx="70" cy="209" r="7" fill="#3D2817" opacity="0.7" />
           </motion.g>
 
-          {/* Sparkle effects around brush */}
+          {/* Sparkle/Shine effects */}
           <motion.g
-            animate={{ opacity: [0.3, 1, 0.3] }}
+            animate={{ opacity: [0.2, 0.8, 0.2] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <circle cx="90" cy="40" r="3" fill="#D09163" />
-            <circle cx="30" cy="50" r="2.5" fill="#FFD5BB" />
+            <circle cx="105" cy="35" r="2.5" fill="#FFE8D0" />
+            <circle cx="35" cy="50" r="2" fill="#FFD5BB" />
           </motion.g>
 
           <motion.g
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
+            animate={{ opacity: [0.2, 0.8, 0.2] }}
+            transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
           >
-            <circle cx="95" cy="80" r="2" fill="#FFD5BB" />
-            <circle cx="25" cy="100" r="2.5" fill="#D09163" />
+            <circle cx="110" cy="80" r="2" fill="#FFE8D0" />
+            <circle cx="30" cy="95" r="2.5" fill="#FFD5BB" />
           </motion.g>
         </motion.svg>
 
