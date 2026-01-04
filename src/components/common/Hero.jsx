@@ -106,8 +106,9 @@ export default function Hero() {
               >
                 <LazyImage
                   src={image.src}
-                  alt={`Gallery image ${index + 1}`}
+                  alt={`Beauty training demonstration - Professional makeup and styling at Dazzling World Academy`}
                   className="w-full h-full object-cover rounded-3xl shadow-lg cursor-pointer"
+                  loading="lazy"
                 />
               </motion.div>
             ))}
@@ -141,8 +142,9 @@ export default function Hero() {
               >
                 <LazyImage
                   src={image.src}
-                  alt={`Gallery image ${index + 1}`}
+                  alt={`Beauty training session - Professional makeup artistry course at Dazzling World Academy`}
                   className="w-full h-full object-cover rounded-3xl shadow-lg cursor-pointer"
+                  loading="lazy"
                 />
               </motion.div>
             ))}
