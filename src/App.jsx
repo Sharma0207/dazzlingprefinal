@@ -36,6 +36,7 @@ function App() {
 
   return (
     <div className="App">
+      <LoadingScreen isLoading={isLoading} />
       <FixedNavbar />
       <ScrollToTop />
       <EnquiryForm />
