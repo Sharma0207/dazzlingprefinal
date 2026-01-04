@@ -88,7 +88,7 @@ export default function LoadingScreen({ isLoading }) {
           {/* Outer Glow - Animated */}
           <motion.circle
             cx="100"
-            cy="100"
+            cy="110"
             r="95"
             fill="none"
             stroke="url(#glowGradient)"
