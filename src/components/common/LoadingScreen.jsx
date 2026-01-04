@@ -46,11 +46,11 @@ export default function LoadingScreen({ isLoading }) {
 
       {/* Main content container */}
       <div className="relative z-10 flex flex-col items-center justify-center gap-8">
-        {/* Animated Face Getting Makeup Applied */}
+        {/* Animated Makeup Bag Opening */}
         <motion.svg
-          width="200"
-          height="240"
-          viewBox="0 0 200 240"
+          width="220"
+          height="260"
+          viewBox="0 0 220 260"
           className="drop-shadow-2xl"
         >
           <defs>
