@@ -52,12 +52,18 @@ export default function Curve() {
             <div className="hidden sm:block w-px h-6 bg-black/60" />
 
             {/* Instagram */}
-            <button className="flex items-center gap-2 text-black hover:text-gray-700 transition group">
+            <a
+              href="https://www.instagram.com/dazzlingworldacademy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-black hover:text-gray-700 transition group"
+              aria-label="Visit Dazzling World Academy on Instagram"
+            >
               <Instagram className="w-6 h-6" />
               <span className="font-karla text-base tracking-wide">
                 Find Us On Instagram
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
