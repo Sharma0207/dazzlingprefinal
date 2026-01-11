@@ -21,6 +21,12 @@ const awardsData = [
     title: "Nari Award, 2018",
     description: "Hair and Beauty Industry Authority UK recognition",
   },
+  {
+    id: 4,
+    image: "https://cdn.builder.io/api/v1/image/assets%2F37ad2b39330a492489c1a509e5a35af1%2F4d722b2f16f640aeb4c1aa735abe7db9?format=webp&width=800",
+    title: "Certificate of Affiliation - NSQF Skill India, 2024",
+    description: "Authorized Training Center of ENTRI SKILLS DEVELOPMENT AND MANAGEMENT under NSQF Fee-Based Program",
+  },
 ];
 
 export default function Awards() {
