@@ -10,16 +10,16 @@ const awardsData = [
     description: "Globally recognized beauty & spa therapy qualification",
   },
   {
-    id: 2,
-    image: award2,
-    title: "Business Achievers Award, 2016",
-    description: "UK-based professional beauty & hairdressing standards",
-  },
-  {
     id: 4,
     image: "https://cdn.builder.io/api/v1/image/assets%2F37ad2b39330a492489c1a509e5a35af1%2F4d722b2f16f640aeb4c1aa735abe7db9?format=webp&width=800",
     title: "Certificate of Affiliation - NSQF Skill India, 2024",
     description: "Authorized Training Center of ENTRI SKILLS DEVELOPMENT AND MANAGEMENT under NSQF Fee-Based Program",
+  },
+  {
+    id: 2,
+    image: award2,
+    title: "Business Achievers Award, 2016",
+    description: "UK-based professional beauty & hairdressing standards",
   },
 ];
 
