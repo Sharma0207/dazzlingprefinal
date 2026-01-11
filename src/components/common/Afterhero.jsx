@@ -18,7 +18,7 @@ export default function Afterhero() {
             </div>
 
             <h2 className="font-playfair-display text-[29px] font-bold text-black leading-[33px] mb-6">
-              India's Leading Provider of Private Beauty Training since 2003.
+              India's Leading Provider of Beauty Training since 2003.
             </h2>
 
             <p className="font-libre-franklin text-[18px] text-black leading-[33px] mb-10 max-w-[633px]">

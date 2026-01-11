@@ -55,7 +55,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="block font-playfair-display text-4xl sm:text-5xl md:text-6xl lg:text-[71px] font-bold leading-tight text-black capitalize">
+          <span className="block font-playfair-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[60px] font-bold leading-tight text-black capitalize">
             Welcome to{" "}
             <motion.span
               className="text-[#D09163]"
@@ -63,7 +63,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Dazzling World !
+              Dazzling World Academy!
             </motion.span>
           </span>
         </motion.h1>
@@ -106,8 +106,9 @@ export default function Hero() {
               >
                 <LazyImage
                   src={image.src}
-                  alt={`Gallery image ${index + 1}`}
+                  alt={`Beauty training demonstration - Professional makeup and styling at Dazzling World Academy`}
                   className="w-full h-full object-cover rounded-3xl shadow-lg cursor-pointer"
+                  loading="lazy"
                 />
               </motion.div>
             ))}
@@ -141,8 +142,9 @@ export default function Hero() {
               >
                 <LazyImage
                   src={image.src}
-                  alt={`Gallery image ${index + 1}`}
+                  alt={`Beauty training session - Professional makeup artistry course at Dazzling World Academy`}
                   className="w-full h-full object-cover rounded-3xl shadow-lg cursor-pointer"
+                  loading="lazy"
                 />
               </motion.div>
             ))}
