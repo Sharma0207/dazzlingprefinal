@@ -3,6 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DoodlePattern from "./DoodlePattern";
+import priyanka from "./../../assets/dazzling_images/testimonial/priyanka.jpeg";
+import Nisha from "./../../assets/dazzling_images/testimonial/Nisha.jpeg";
+import komal from "./../../assets/dazzling_images/testimonial/komal.jpeg";
+import kumari_kanchan from "./../../assets/dazzling_images/testimonial/kumari_kanchan.jpeg";
+import Nishi from "./../../assets/dazzling_images/testimonial/Nishi.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,35 +22,35 @@ export default function Testimonial() {
       id: 1,
       name: "Priyanka",
       role: "Dazzling 25 Batch",
-      image: "/src/assets/dazzling_images/testimonial/priyanka.jpeg",
+      image: priyanka,
       text: "I'm currently studying at Dazzling World Academy and the experience has been amazing. The hands-on training and supportive environment are helping me build a strong foundation in makeup artistry.",
     },
     {
       id: 2,
       name: "Nisha",
       role: "Dazzling 25 Batch",
-      image: "/src/assets/dazzling_images/testimonial/Nisha.jpeg",
+      image: Nisha,
       text: "Learning here has been transformative. The instructors are incredibly knowledgeable and patient. I'm gaining practical skills that will help me pursue my dream career in beauty consulting.",
     },
     {
       id: 3,
       name: "Komal",
       role: "Dazzling 25 Batch",
-      image: "/src/assets/dazzling_images/testimonial/komal.jpeg",
+      image: komal,
       text: "The curriculum at Dazzling World Academy is comprehensive and well-structured. I'm currently learning so much about salon management and business fundamentals. Highly recommend!",
     },
     {
       id: 4,
       name: "Kumari Kanchan",
       role: "Dazzling 25 Batch",
-      image: "/src/assets/dazzling_images/testimonial/kumari_kanchan.jpeg",
+      image: kumari_kanchan,
       text: "As a current student, I'm impressed by how the academy covers everything from basic to advanced techniques. The practical sessions are helping me gain real-world confidence in my skills.",
     },
     {
       id: 5,
       name: "Nishi",
       role: "Dazzling 25 Batch",
-      image: "/src/assets/dazzling_images/testimonial/Nishi.jpeg",
+      image: Nishi,
       text: "I'm loving my journey here at Dazzling World Academy. The teachers are passionate about helping us succeed, and I'm learning valuable skills in beauty education. Great community!",
     },
   ];
@@ -82,7 +87,7 @@ export default function Testimonial() {
     const autoScroll = () => {
       if (!isPaused) {
         scrollPos += 1;
-        
+
         // Reset scroll position when reaching the middle (infinite loop)
         if (scrollPos >= totalWidth / 2) {
           scrollPos = 0;
@@ -123,7 +128,10 @@ export default function Testimonial() {
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative bg-white py-16 md:py-20 lg:py-24 overflow-hidden"
+    >
       {/* Doodle Pattern Background */}
       <DoodlePattern />
 
@@ -254,11 +262,16 @@ export default function Testimonial() {
         >
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#D09163] animate-pulse" />
-            <div className="w-2 h-2 rounded-full bg-[#D09163] animate-pulse" style={{ animationDelay: "75ms" }} />
-            <div className="w-2 h-2 rounded-full bg-[#D09163] animate-pulse" style={{ animationDelay: "150ms" }} />
+            <div
+              className="w-2 h-2 rounded-full bg-[#D09163] animate-pulse"
+              style={{ animationDelay: "75ms" }}
+            />
+            <div
+              className="w-2 h-2 rounded-full bg-[#D09163] animate-pulse"
+              style={{ animationDelay: "150ms" }}
+            />
           </div>
         </motion.div>
-
       </div>
 
       <style jsx>{`
@@ -272,7 +285,7 @@ export default function Testimonial() {
         }
 
         .testimonial-card::before {
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           left: -100%;
