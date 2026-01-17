@@ -2,8 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="shortcut icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta -->
     <meta
       name="description"
       content="India's Leading Provider of Private Beauty Training since 2003. Professional beauty courses with international certifications (CIDESCO, VTCT, HABIA). Learn makeup, hairstyling, skincare from certified trainers in Patna and Hyderabad."
@@ -14,6 +21,7 @@
     />
     <meta name="author" content="Dazzling World Academy" />
     <meta name="theme-color" content="#FFD5BB" />
+
     <meta
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
@@ -22,14 +30,8 @@
       name="googlebot"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta name="apple-mobile-web-app-title" content="Dazzling World" />
 
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.dazzlingworldacademy.com/" />
     <meta
@@ -38,99 +40,63 @@
     />
     <meta
       property="og:description"
-      content="Transform your passion for beauty into a thriving career. Learn professional makeup, hairstyling, skincare with international certifications."
+      content="Transform your passion for beauty into a thriving career with international certifications."
     />
-    <meta property="og:image" content="/logo.png" />
+    <meta
+      property="og:image"
+      content="https://www.dazzlingworldacademy.com/logo.png"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_IN" />
 
     <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dazzling World Academy" />
     <meta
-      property="twitter:url"
-      content="https://www.dazzlingworldacademy.com/"
+      name="twitter:description"
+      content="India's leading beauty academy with international certifications."
     />
     <meta
-      property="twitter:title"
-      content="Dazzling World Academy - Beauty Training"
-    />
-    <meta
-      property="twitter:description"
-      content="India's leading beauty academy offering international certified courses."
-    />
-    <meta
-      property="twitter:image"
+      name="twitter:image"
       content="https://www.dazzlingworldacademy.com/logo.png"
     />
 
-    <!-- Canonical URL -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://www.dazzlingworldacademy.com/" />
 
-    <!-- Alternate Links for Localization -->
-    <link
-      rel="alternate"
-      hreflang="en-IN"
-      href="https://www.dazzlingworldacademy.com/"
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://www.dazzlingworldacademy.com/"
-    />
-
-    <!-- Sitemap & RSS -->
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
-    <!-- Preconnect to external resources -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://api.builder.io" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Preload Critical Resources -->
-    <link
-      rel="preload"
-      as="font"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      as="font"
-      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap"
-      crossorigin
-    />
+    <!-- Smooth Scroll -->
     <style>
       html {
         scroll-behavior: smooth;
       }
-
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
         }
-        * {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
       }
     </style>
 
-    <!-- JSON-LD Schema Markup -->
+    <!-- ================= SCHEMA MARKUP ================= -->
+
+    <!-- Organization / Educational -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "EducationalOrganization",
         "name": "Dazzling World Academy",
         "url": "https://www.dazzlingworldacademy.com",
-        "logo": "/logo.png",
+        "logo": "https://www.dazzlingworldacademy.com/logo.png",
         "description": "India's Leading Provider of Beauty Training with international certifications",
         "foundingDate": "2003",
-        "areaServed": {
-          "@type": "GeoShape",
-          "areaIncluded": ["Patna", "Hyderabad", "India"]
-        },
         "sameAs": [
           "https://www.instagram.com/dazzlingworldacademy",
           "https://www.facebook.com/dazzlingworldacademy"
@@ -140,83 +106,31 @@
           "telephone": "+91-8001234747",
           "contactType": "Customer Service",
           "email": "admission@dazlingworld.in"
-        },
-        "address": [
-          {
-            "@type": "PostalAddress",
-            "name": "Patna Campus",
-            "streetAddress": "5th Floor, AP Complex, Bailey Road Near Ranjan Path",
-            "addressLocality": "Patna",
-            "addressRegion": "Bihar",
-            "postalCode": "801503",
-            "addressCountry": "IN"
-          },
-          {
-            "@type": "PostalAddress",
-            "name": "Hyderabad Campus",
-            "streetAddress": "Hyderabad",
-            "addressLocality": "Hyderabad",
-            "addressRegion": "Telangana",
-            "postalCode": "500034",
-            "addressCountry": "IN"
-          }
-        ]
+        }
       }
     </script>
 
-    <!-- Organization Schema -->
+    <!-- Local Business -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Dazzling World Academy",
-        "image": "/logo.png",
-        "description": "Professional Beauty Training Institute",
+        "image": "https://www.dazzlingworldacademy.com/logo.png",
+        "logo": "https://www.dazzlingworldacademy.com/logo.png",
         "url": "https://www.dazzlingworldacademy.com",
         "telephone": "+91-8001234747",
         "priceRange": "$$",
-        "areaServed": ["Patna", "Hyderabad"],
-        "hasCredential": {
-          "@type": "EducationalOccupationalCredential",
-          "name": "International Beauty Certifications",
-          "credentialCategory": "CIDESCO, VTCT, HABIA Certified"
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Patna",
+          "addressRegion": "Bihar",
+          "addressCountry": "IN"
         }
       }
     </script>
 
-    <!-- Aggregate Rating Schema (Replace with actual ratings) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "AggregateRating",
-        "name": "Dazzling World Academy",
-        "ratingValue": "4.8",
-        "reviewCount": "1250",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    </script>
-
-    <!-- Course Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Course",
-        "name": "Professional Beauty Training",
-        "provider": {
-          "@type": "Organization",
-          "name": "Dazzling World Academy",
-          "sameAs": "https://www.dazzlingworldacademy.com"
-        },
-        "description": "Comprehensive professional beauty training courses including makeup, hairstyling, skincare, and business skills with international certifications.",
-        "courseCode": "DWA-BEAUTY",
-        "educationLevel": "Beginner to Advanced",
-        "learningResourceType": "Course",
-        "syllabusSummary": "Professional makeup artistry, hairstyling techniques, skincare, business management, and international certifications (CIDESCO, VTCT, HABIA)"
-      }
-    </script>
-
-    <!-- WebSite Schema -->
+    <!-- Website -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -225,53 +139,19 @@
         "url": "https://www.dazzlingworldacademy.com",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://www.dazzlingworldacademy.com/search?q={search_term_string}"
-          },
+          "target": "https://www.dazzlingworldacademy.com/search?q={search_term_string}",
           "query-input": "required name=search_term_string"
         }
       }
     </script>
 
-    <!-- BreadcrumbList Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.dazzlingworldacademy.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "About",
-            "item": "https://www.dazzlingworldacademy.com/#afterhero"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Courses",
-            "item": "https://www.dazzlingworldacademy.com/#courses"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Contact",
-            "item": "https://www.dazzlingworldacademy.com/#footer"
-          }
-        ]
-      }
-    </script>
+    <!-- ================= END SCHEMA ================= -->
 
     <title>
       Dazzling World Academy - Professional Beauty Training Institute
     </title>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
