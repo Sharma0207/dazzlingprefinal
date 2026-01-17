@@ -10,7 +10,7 @@
     <priority>1.0</priority>
     <mobile:mobile/>
     <image:image>
-      <image:loc>https://www.dazzlingworldacademy.com/logo.png</image:loc>
+      <image:loc>/logo.png</image:loc>
       <image:title>Dazzling World Academy Logo</image:title>
     </image:image>
   </url>
