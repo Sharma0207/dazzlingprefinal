@@ -86,11 +86,13 @@ export default function FixedNavbar() {
 
           {/* Center Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/e1de6b2f2b99de374eacb331d5918da7632c368e"
-              alt="Dazzling World Logo"
-              className="h-12 md:h-16 w-auto transition-all duration-300"
-            />
+            <a href="#hero" aria-label="Dazzling World Academy - Go to home">
+              <img
+                src="/logo.png"
+                alt="Dazzling World Academy - Professional Beauty Training Institute"
+                className="h-12 md:h-16 w-auto transition-all duration-300"
+              />
+            </a>
           </div>
 
           {/* Right Side - Phone & Enquire Button */}
